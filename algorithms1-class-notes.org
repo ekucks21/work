@@ -1,0 +1,9 @@
+* Prerequisites
+- math
+  - discrete math
+  - proofs by induction
+  - Mathematics for Computer Science by Eric Lehman and Tom Layden
+- programming
+* Merge Sort
+- example of divide and conquer
+  - break problem into smaller problems then combine the smaller solutions 
