@@ -7,3 +7,6 @@
 * Merge Sort
 - example of divide and conquer
   - break problem into smaller problems then combine the smaller solutions 
+* Big Oh
+** Omega Notation
+- T(n)=Omega(f(n)) if and only if there exists constants C,n0 such that T(n) >= C*f(n) for all n >= n0
