@@ -10,3 +10,12 @@
 * Big Oh
 ** Omega Notation
 - T(n)=Omega(f(n)) if and only if there exists constants C,n0 such that T(n) >= C*f(n) for all n >= n0
+** Little-oh Notation
+- strictly less than vs big oh which is equal to or less than
+** Examples
+*** Claim: 2^n+10 = O(2^n)
+- Proof: need to pick constants such that
+  - (*) 2^n+10 <= c*2^n for all n >= n_0
+  - Note: 2^n+10 = 2^10 * 2^n = 1024 * 2^n
+  - so if we choose c=1024, n_0=1, then (*) holds
+* Divide and Conquer Algorithms 
