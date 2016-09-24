@@ -19,3 +19,16 @@
   - Note: 2^n+10 = 2^10 * 2^n = 1024 * 2^n
   - so if we choose c=1024, n_0=1, then (*) holds
 * Divide and Conquer Algorithms 
+** Steps
+- DIVIDE into smaller problems
+- CONQUER via recursive calls
+- COMBINE solutions of subproblems into one solution
+** An example problem
+*** Overview
+- Input: array A containing the numbers 1,2,3,... in some arbitrary order
+- Output: number of inversions. In other words, number of pairs (i, j) of array indices with i < j and A[i] > A[j].
+*** Example 1
+- (1, 3, 5, 2, 4, 6)
+- Inversions: (3,2), (5,2), (5,4)
+- Motivation: numerical similarity measure between two ranked lists (e.g. for "collaborative filtering" - propose other things to buy based on other
+people with similar purchasing history)
