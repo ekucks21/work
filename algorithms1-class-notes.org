@@ -32,3 +32,9 @@
 - Inversions: (3,2), (5,2), (5,4)
 - Motivation: numerical similarity measure between two ranked lists (e.g. for "collaborative filtering" - propose other things to buy based on other
 people with similar purchasing history)
+- solution:
+  - claim: the split inversions involving and element y in the second array C are precisely the numbers left in the first array B when y is copied to the output D
+  - proof:
+    - let x be an element of the array B
+    - if x is copied to output D before y, then x < y => no inversion involving x and y
+    - if y is copied to output D before x, then y < x => x and y are a split inversion
