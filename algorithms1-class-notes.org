@@ -51,3 +51,9 @@ people with similar purchasing history)
     - when 2 copied to output, discover the split inversions (3,2) and (5,2)
     - when 4 copied to outpu, discover the split inversion (5,4)
   - claim: the split inversions involving an element y of the 2nd array C are precisely the numbers left in the 1st array B when y is copied to the output D
+- solution:
+  - claim: the split inversions involving and element y in the second array C are precisely the numbers left in the first array B when y is copied to the output D
+  - proof:
+    - let x be an element of the array B
+    - if x is copied to output D before y, then x < y => no inversion involving x and y
+    - if y is copied to output D before x, then y < x => x and y are a split inversion
