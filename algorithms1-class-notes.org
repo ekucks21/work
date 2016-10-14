@@ -1,3 +1,5 @@
+#+STARTUP entitiespretty
+
 * Prerequisites
 - math
   - discrete math
@@ -57,3 +59,27 @@ people with similar purchasing history)
     - let x be an element of the array B
     - if x is copied to output D before y, then x < y => no inversion involving x and y
     - if y is copied to output D before x, then y < x => x and y are a split inversion
+* Strassen's Subcubic Matrix Multiplication Algorithm 
+** Matrix Multiplication
+*** Definition
+- x[][] * y[][] = z[][]
+- z_ij = (ith row of x) * (jth column of y) = sum of k=1 to n x_ik * y_jk
+*** Example
+| a | b | * | e | f | = | ae + bg | af + bh |
+| c | d |   | g | h |   | ce + dg | cf + dh |
+*** Applying Divide and Conquer
+- Idea: 
+  write x =
+  | a | b |
+  | c | d |
+  and y =
+  | e | f |
+  | g | h |
+[where A through H are all n/2 * n/2 matrices]
+- Then: 
+x*y = 
+| ae + bg | af + bh |
+| ce + dg | cf + dh |
+
+
+
