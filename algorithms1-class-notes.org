@@ -101,6 +101,8 @@ x*y =
 | p5+p4-p2+p6 | p1+p2       |
 |-------------+-------------|
 | p3+p4       | p1+p5-p3-p7 |
+**** How could you figure this out?
+[[http://softwareengineering.stackexchange.com/questions/199627/how-did-strassen-come-up-with-his-matrix-multiplication-method][how did strassen come up with his matrix multiplication method]]
 
 
 
