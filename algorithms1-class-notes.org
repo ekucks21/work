@@ -103,7 +103,8 @@ x*y =
 | p3+p4       | p1+p5-p3-p7 |
 **** How could you figure this out?
 [[http://softwareengineering.stackexchange.com/questions/199627/how-did-strassen-come-up-with-his-matrix-multiplication-method][how did strassen come up with his matrix multiplication method]]
-
-
-
+* Algorithm for Closest Pair 
+** Problem
+- Input: a set p = {p_1,...,p_n} of n points in the plane (R2)
+- Notation: d(p_i, p_j) = Euclidean distance
 
