@@ -107,4 +107,23 @@ x*y =
 ** Problem
 - Input: a set p = {p_1,...,p_n} of n points in the plane (R2)
 - Notation: d(p_i, p_j) = Euclidean distance
+  So if p_i=(x_i, y_i) and p_j=(x_j,y_j), d(p_i, p_j) = square root of (x_i -
+  y_i)^2 + (x_j - y_j)^2
+- Output: a pair p*, q* in the set p of distinct points that minimi
+- Assumption: all points have distinct x-coordinates, distinct y-coordinates
+- Brute force search: takes Theta(n^2) time
+- 1-dimension version of closest pair: all points lie on a line
+  - sort points (O(n log n) time)
+  - return closest pair of adjacent points (O(n) time)
+- Goal: O(n log n) time algorithm for 2-D version
+*** High level approach
+    - make copies of points sorted by x-coordinate (Px) and by y-coordinate (Py)
+      - sorting is sort of a "for free" data transformation in algorithms
+    - use divide and conquer
+*** ClosestPair(Px, Py)
+    - let Q = left half of P, R = right half of P
+      - base case, once you have only 2 or 3 points, brute search for closest points
+      - form Qx, Qy, Rx, Ry (takes O(n) time)
+    - (p_1, q_1) = ClosestPair(
+
 
