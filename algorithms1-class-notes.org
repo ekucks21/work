@@ -121,9 +121,25 @@ x*y =
       - sorting is sort of a "for free" data transformation in algorithms
     - use divide and conquer
 *** ClosestPair(Px, Py)
-    - let Q = left half of P, R = right half of P
-      - base case, once you have only 2 or 3 points, brute search for closest points
-      - form Qx, Qy, Rx, Ry (takes O(n) time)
-    - (p_1, q_1) = ClosestPair(
+    1. let Q = left half of P, R = right half of P
+       - base case, once you have only 2 or 3 points, brute search for closest points
+       - form Qx, Qy, Rx, Ry (takes O(n) time)
+    2. (p_1, q_1) = ClosestPair(Qx, Qy)
+    3. (p_2, q_2) = ClosestPair(Rx, Ry)
+    4. let delta = min {d(p1, q1), d(p2, q2)}
+    5. (p3, q3) = ClosestSplitPair(Px, Py, delta)
+    7. return best of (p1, q1), (p2, q2), (p3, q3)
+    8. KEY IDEA: only need to bother computing the closest split pair in "unlucky
+       case" where its distance is less than d(p1, q1) and d(p2, q2)
+*** ClosestSplitPair(Px, Py, delta)
+    - let x| = biggest x - coordinate in left of P *(O(1) time)*
+    - let Sy = points of P with x-coordinate in 
+      [x| -delta, x| +delta], sorted by y-coordinate *(O(n) time)*
+    - Initialize best = delta, bestpair = null
+    - For i = 1 to |Sy| - 1
+      - For j=1 to min{7, |Sy| - i}
+        - let p_ij = ith, (i+j)th points of Sy
+        - If d(p, q) < best
+          - bestpair = (p,q), best = d(p,q)
 
 
