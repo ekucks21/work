@@ -1,0 +1,13 @@
+* The Three Ways
+** The First Way: Flow
+** The Second Way: The Principles of Feedback
+   - In complex systems, no way to achieve perfection
+   - Next best thing is detecting something gone wrong early to avoid a catastrophe
+   - Treat failure as learning opportunity, not chance to play blame game
+*** Working Safely Within Complex Systems
+    - Complex work is managed so that problems in design and operations are revealed
+    - Problems are swarmed and solved, resulting in quick construction of new knowledge
+    - new local knowledge is exploited globally throughout the organization
+    - leaders create other leaders who continually grow these types of capabilities
+*** See problems as they occur
+    - feedback loops
