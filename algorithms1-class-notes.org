@@ -141,5 +141,13 @@ x*y =
         - let p_ij = ith, (i+j)th points of Sy
         - If d(p, q) < best
           - bestpair = (p,q), best = d(p,q)
+*** Correctness Claim
+    - Claim: let p in Q, q in R be a split pair with d(p, q) < delta
+    - Then:
+      - A: p and q are members of Sy
+      - B: p and q are at most 7 positions apart in Sy
+    - Corollary 1: If the closest pair of P is a split pair, then ClosestSplitPair
+      finds it
+    - Corollary 2: ClosestPair is correct, and runs in O(n log n) time
 
 
