@@ -11,3 +11,101 @@
     - leaders create other leaders who continually grow these types of capabilities
 *** See problems as they occur
     - feedback loops
+    - automated build, integration, and test
+    - production telemetry to determine operational health
+*** Swarm and solve problems to build new knowledge
+    - steps
+      - if something goes wrong or work is taking too long, alert the team
+        leader
+      - if the problem isn't resolved within a specified time, have rest of team
+        work until problem is resolved
+    - necessary because
+      - prevents the problem from progressing downstream, where the cost and
+        effort to repair it increases exponentially and technical debt is
+        allowed to accumulated
+      - prevents work center from starting new work, which will likely introduce
+        new errors into the system
+      - if problem is not addressed, the work center could potentially have the
+        same problem in the next operation (e.g., fifty-five seconds later),
+        requiring more fixes and work
+    - need equivalent to andon cord
+      - production incident
+      - breaking change in continuous build or test processes
+*** keep pushing quality closer to the source
+    - examples of ineffective quality controls include:
+      - requiring another team to complete tedious, error-prone, and manual
+        tasks that could be easily automated and run as needed by the team who
+        needs the work performed
+      - requiring approvals from busy people who are distant from the work,
+        forcing them to make decisions without an adequate knowledge of the work
+        or the potential implications, or to merely rubber stamp their approvals
+      - creating large volumes of documentation of questionable detail which
+        become obsolete shortly after they are written
+      - pushing large batches of work to teams and special committees for
+        approval and processing and then waiting for responses
+    - instead, everyone in value stream should find and fix problems in their
+      area of control as part of daily work
+    - use peer reviews
+    - automate QA and IA as much as possible
+    - make quality everyone's responsibility
+*** enable optimizing for downstream work centers
+    - *according to Lean, our most important customer is our next step downstream*
+      - for example, the lab SAs and the CIT/SAT testers
+    - operational non-functional requirements (e.g. architecture, performance,
+      stability, testability, configurability, and security) are prioritized as
+      highly as user features
+** The Third Way: the principles of continual learning and experimentation
+   - low performing environments discourage making mistakes and learning
+   - high performing environments allow workers in the value stream to
+     experiment with new improvements, enabled by rigorous standardization of
+     work procedures and documentation of the results
+   - reserve time for improvement of daily work and learning
+   - introduce stress into systems to force continual improvement
+   - simulate and inject failures in production services under controlled
+     conditions to increase resilience
+*** enabling organizational learning and a safety culture
+    - when bad things happen, root cause analysis often leads to blame game and
+      more top down processes and approvals
+    - "Responses to incidents and accidents that are seen as unjust can impede
+      safety investigations, promote fear rather than mindfulness in people who
+      do safety-critical work, make organizations more bureaucratic rather than
+      more careful, and cultivate professional secrecy, evasion, and self-protection"
+    - three types of culture:
+      - Pathological organizations are characterized by large amounts of fear
+        and threat. People often hoard information, withhold it for political
+        reasons, or distort it to make themselves look better. Failure is often hidden.
+      - Bureaucratic organizations are characterized by rules and processes,
+        often to help individual departments maintain their "turf". Failure is
+        processed through a system of judgment, resulting in either punishment
+        or justice and mercy.
+      - Generative organizations are characterized by actively seeking and
+        sharing information to better enable the organization to achieve its
+        mission. Resposibilities are shared throughout the value stream, and
+        failure results in reflection and genuine inquiry.
+*** institutionalize the improvement of daily work
+    - "even more important than daily work is the improvement of daily work"
+*** transform local discoveries into global improvements
+    - make blameless post-morten reports searchable by teams trying to solve
+      similar problems
+    - create shared source code repositories that span the entire organization
+*** inject resilience patterns into our daily work
+    - antifragility (Nassim Nicholas Taleb)
+    - reduce deployment lead times
+    - increase test coverage
+    - decrease test execution times
+    - re-architect if necessary to increase developer productivity or increase reliability
+    - game day exercises, where we rehearse large scale failures, such as
+      turning off entire data centers
+    - inject ever larger scale faults into production environment
+*** leaders reinforce a learning culture
+    - explicitly state True North goals, such as "sustain zero accidents"
+    - strategic goals inform iterative, shorter term goals
+    - coaching questions for people conducting experiment
+      - what was your last step and what happened?
+      - what did you learn?
+      - what is your condition now?
+      - what is your next target condition?
+      - what obstacle are you working on now?
+      - what is your next step?
+      - what is your expected outcome?
+      - when can we check?
