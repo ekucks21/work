@@ -149,5 +149,28 @@ x*y =
     - Corollary 1: If the closest pair of P is a split pair, then ClosestSplitPair
       finds it
     - Corollary 2: ClosestPair is correct, and runs in O(n log n) time
+*** Proof of Correctness Claim (A)
+    - let p = (x1, y1) in Q, q=(x2, y2) in R, d(p, q) < delta
+      - note: since d(p, q) < delta, |x1 - x2| < delta and |y1 - y2| < delta
+    - Proof: [p and q are members of Sy, ie x1, x2 in [x| - delta, x| + delta]]
+      - note: p in Q => x1 <= x| and q in R => x2 >= x|
+      - => x1, x2 in [x| - delta, x| + delta]
+*** Proof of Correctness Claim (B)
+    - B: p=(x1, y1) and q=(x2,y2) are at most 7 positions apart in Sy
+    - key picture: draw delta/2 * delta/2 boxes with center x| and bottom min {y1,y2}
+    - lemma 1: all points of Sy with y-coordinate between those of p and q, inclusive,
+      lie in one of these 8 boxes
+      - proof: first, recall y-coordinates of p,q differ by < delta
+      - second, by definition of Sy, all have x-coordinates between x| - delta and
+        x| + delta
+    - lemma 2: at most one point of p in each box
+      - proof: by contradiction. Suppose a,b lie in the same box. Then:
+        - (i) a,b are either both in Q or both in R
+        - (ii) d(a, b) <= delta/2 * square root of 2 < delta
+        - But (i) and (ii) contradict the definition of delta (as smallest distance between
+          pair of points in Q or in R)
+*** Final wrap-up
+    - lemmas 1 and 2 => at most 8 points in this picture (including p and q)
+    - => positions of p,q in Sy differ by at most 7
 
 
