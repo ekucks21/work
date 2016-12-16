@@ -172,5 +172,87 @@ x*y =
 *** Final wrap-up
     - lemmas 1 and 2 => at most 8 points in this picture (including p and q)
     - => positions of p,q in Sy differ by at most 7
-
-
+* Master Method
+  - Motivation: potentially useful algorithmic ideas often need mathematical analysis to 
+   evaluate
+  - Recall: grade-school multiplication algorithm uses theta(n^2) operations to
+    multiply two n-digit numbers
+** A recursive algorithm
+   - recursive approach: write x=10^(n/2)a + b y=10^(n/2)c + d
+     [where a,b,c,d are n/2 digit numbers]
+   - So: x*y=10^n(ac) + 10^(n/2)(ad+bc) + bd (*)
+   - Algorithm #1: recursively compute ac, ad, bc, bd then compute (*) in obvious
+     way
+     - T(n) = maximum number of operations this algorithm needs to multiply two 
+       n-digit numbers
+     - recurrence: express T(n) in terms of running time of recursive calls
+     - base case: T(1) <= a constant
+     - for all n > 1: T(n) <= 4T(n/2) + O(n)
+** A better recursive algorithm
+   - algorithm #2 (Gauss): recursively compute (1) ac, (2) bd, (3) (a+b)(c+d)
+     [recall ad+bc=(3) - (1) - (2)]
+   - new recurrence:
+     - base case: T(1) <= a constant
+     - for all n > 1: T(n) <= 3T(n/2) + O(n)
+** The Master Method
+   - cool feature: a "black box" for solving recurrences
+   - assumption: all subproblems have equal size
+*** recurrence format
+    - base case: T(n) <= a constant for all sufficiently small n
+    - for all larger n:
+      - T(n) <= aT(n/b) + O(n^d)
+      - where
+        - a = number of recursive calls (>= 1)
+        - b = input size shrinkage factor (> 1)
+        - d = exponent in running time of "combine step" (>=0)
+        - [a,b,d independent of n]
+*** definition
+    - T(n) = 
+      - O(n^d log n) if a = b^d
+      - O(n^d) if a < b^d
+      - O(n^log_b(a)) if a > b^d
+*** examples
+**** example 1: Merge Sort
+     - a = 2
+     - b = 2
+     - d = 1
+     - a = 2 = b^d
+     - => T(n) <= O(n^d log n) = O(n log n)
+**** example 2: binary search
+     - a = 1
+     - b = 2
+     - d = 0
+     - a = b^d => T(n) = O(n^d log n) = O(log n)
+**** example 3: integer multiplication
+     - a = 4
+     - b = 2
+     - d = 1
+     - b^d=2 < a
+     - => T(n) = O(n^log_b(a)) = O(n^log_2(4)) = O(n^2)
+**** example 4: gauss's integer multiplication
+     - a = 3
+     - b = 2
+     - d = 1
+     - b^d=2 < a
+     - => T(n) = O(n^log_b(a)) = O(n^log_2(3))
+**** example 5: strassen's matrix multiplication
+     - a = 7
+     - b = 2
+     - d = 1
+     - b^d=4 < a
+     - => T(n) = O(n^log_2(7)) = O(n^2.81)
+     - => beats the naive iterative algorithm O(n^3)
+**** example 6: fictitious recurrence
+     - T(n) <= 2T(n/2) + O(n^2)
+     - a = 2
+     - b = 2
+     - d = 2
+     - b^d=4 > a (case 2)
+     - => T(n) = O(n^2)
+** Proof
+*** Preamble
+    - assume: recurrence is (for some constant c)
+      - (i) T(1) <= c
+      - (ii) T(n) <= aT(n/b) + cn^d 
+      - and n is a power of b (general case is similar, but more tedious)
+    - Idea: generalize merge sort analysis (ie, use a recursion tree)
