@@ -256,3 +256,8 @@ x*y =
       - (ii) T(n) <= aT(n/b) + cn^d 
       - and n is a power of b (general case is similar, but more tedious)
     - Idea: generalize merge sort analysis (ie, use a recursion tree)
+*** Work at a single recursion level
+    - a^j = # of level-j subproblems
+    - n/b^j = size of each level-j subproblem
+    - c * (n/b^j)^d = work per level-j sub problem
+    - <= a^j * c * (n/b^j)^d = cn^d * (a/b^d)^j
