@@ -109,3 +109,6 @@
       - what is your next step?
       - what is your expected outcome?
       - when can we check?
+* Initiating a DevOps transformation
+** Selecting which value streams to start with
+   
