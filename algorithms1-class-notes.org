@@ -261,3 +261,19 @@ x*y =
     - n/b^j = size of each level-j subproblem
     - c * (n/b^j)^d = work per level-j sub problem
     - <= a^j * c * (n/b^j)^d = cn^d * (a/b^d)^j
+*** Total work
+    - summing over all levels
+      - total work <= cn^d * sum from j=0 to log_b(n) [a/b^d]^j = *
+*** How to think about *
+    - interpretation
+      - a = rate of subproblem proliferation (RSP)
+      - b^d = rate of work shrinkage per subproblem (RWS)
+*** Intuition for the 3 Cases
+    - upper bound for level j: cn^d * (a/b^d)^j
+      - rsp = rws => same amount of work each level (like merge sort) [expect
+        O(n^d log n)]
+      - rsp < rws => less work each level => most work at the root [might expect O(n^d)]
+      - rsp > rws => more work each level => most work at the leaves [might
+        expect O(#leaves)]
+*** The Story so far/Case 1
+    - total work: <= cn^d * sum j=0 to log_b(n) do (a/b^d)^j = (*)
