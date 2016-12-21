@@ -277,3 +277,26 @@ x*y =
         expect O(#leaves)]
 *** The Story so far/Case 1
     - total work: <= cn^d * sum j=0 to log_b(n) do (a/b^d)^j = (*)
+    - if a=b^d, then
+      - (*) = cn^d (log_b(n) + 1)
+      - = O(n^d log n)
+*** Basic Sums Fact
+    - For r!=1, we have 1 + r + r^2 + r^3 = (r^(k+1) -1)/(r - 1)
+    - Proof: by induction
+    - Upshot:
+      - if r < 1 is constant, <= 1/(1-r) = a constant (independent of k) (ie
+        first term of sum dominates)
+      - if r>1 is constant, RHS is <= r^k * (1 + 1/(r-1)) (last term of sum dominates)
+*** Case 2
+    - total work:
+      - if a < b^d [RSP < RWS] then a/b^d <= a constant (independent of n)
+      - = O(n^d)
+      - [total work dominated by top level]
+*** Case 3
+    - total work:
+      - if a > b^d [RSP > RWS] then a/b^d > 1 and a/b^d <= constant * largest term
+      - = O(n^d * (a/b^d)^(log_b(n)))
+      - note: b^(-d log_b(n)) = (b^log_b(n))-d = n^-d
+      - so: (*) = O(a^log_b(n))
+      - a^(log_b(n)) = # leaves in recursion tree
+      - a^log_b(n) = n^log_b(a) since (log_b(n))(log_b(a)) = (log_b(a))(log_b(n))
