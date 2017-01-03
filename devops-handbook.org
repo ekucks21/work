@@ -111,4 +111,29 @@
       - when can we check?
 * Initiating a DevOps transformation
 ** Selecting which value streams to start with
-   
+   - example: Nordstrom
+     - chose projects to improve who were already struggling to meet business goals
+     - mobile app
+       - initial state
+         - could only release updates twice a year
+         - customers were frustrated with product
+       - improvement
+         - first, enable faster on-demand releases
+         - dedicated product team able to independently implement, test, and deliver
+         - continuous planning -> single prioritized backlog of work
+         - interated testing as daily activity
+       - results
+         - doubled features delivered per month
+         - halved number of defects
+     - systems supporting in store restaurants
+       - business need
+         - decrease cost
+         - improve quality
+       - initial state
+         - in 2013, eleven "restaurant re-concepts" and forty-four more in 2014
+         - business leaders suggested tripling team but they decided to improve process
+       - improvement
+         - work intake and deployment process
+         - reduce code deployment times by 60%
+         - reduced number of production incidents 60% to 90%
+** Greenfield vs Brownfield Services
