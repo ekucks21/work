@@ -300,3 +300,16 @@ x*y =
       - so: (*) = O(a^log_b(n))
       - a^(log_b(n)) = # leaves in recursion tree
       - a^log_b(n) = n^log_b(a) since (log_b(n))(log_b(a)) = (log_b(a))(log_b(n))
+* QuickSort
+  - "greatest hit" algorithm
+  - prevalent in practice
+  - beautiful analysis
+  - O(n log n) time "on average", works in place (i.e. minimal extra memory needed)
+** The sorting problem
+   - input: array of n numbers, unsorted
+   - output: same numbers, sorted in increasing order
+   - assume: all array entries distinct
+   - exercise: extend quicksort to handle duplicate entries
+** Partitioning around a pivot
+   - key idea: partition array around a pivot element
+   - pick element of array
