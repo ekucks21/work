@@ -137,3 +137,32 @@
          - reduce code deployment times by 60%
          - reduced number of production incidents 60% to 90%
 ** Greenfield vs Brownfield Services
+   - brownfield is well suited for devops
+   - example: etsy
+     - 35 employees and $87 million in revenue
+     - barely survived holiday season and transformed all aspects of the organization
+     - became highly admired devops organization and set the stage for a
+       successful 2015 IPO
+** Consider both systems of record and systems of engagement
+   - systems of record
+     - systems that run our business
+     - MRP, HR, financial reporting
+     - correctness of transactions/data are paramount
+     - slower pace of change
+   - systems of engagement
+     - customer or employee facing
+     - e-commerce, productivity, etc
+     - higher pace of change
+   - traditional wisdom says to use these categories to have a "fast
+     experimental" and "slow safe" lane
+   - however, devops has found that faster also can mean safer, because we're
+     getting feedback and fixing problems faster
+   - also, because a lot of systems are very interdependent, the ability to make
+     changes to any system is often limited by the system that is the most
+     difficult to safely change (usually a system of record)
+   - scott prugh, VP of product development at CSG, says "We've adopted a
+     philosophy that rejects bi-modal IT, because every one of our customers
+     deserve speed and quality. This means that we need technical excellence,
+     whether the team is supporting a 30 year old mainframe application, a Java
+     application, or a mobile application"
+** Start with the most sympathetic and innovative groups
