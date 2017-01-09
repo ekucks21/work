@@ -305,11 +305,57 @@ x*y =
   - prevalent in practice
   - beautiful analysis
   - O(n log n) time "on average", works in place (i.e. minimal extra memory needed)
-** The sorting problem
-   - input: array of n numbers, unsorted
-   - output: same numbers, sorted in increasing order
-   - assume: all array entries distinct
-   - exercise: extend quicksort to handle duplicate entries
-** Partitioning around a pivot
-   - key idea: partition array around a pivot element
-   - pick element of array
+** Overview
+*** The sorting problem
+    - input: array of n numbers, unsorted
+    - output: same numbers, sorted in increasing order
+    - assume: all array entries distinct
+    - exercise: extend quicksort to handle duplicate entries
+*** Partitioning around a pivot
+    - key idea: partition array around a pivot element
+    - pick element of array [3] 8 2 5 1 4 7 6
+    - rearrange array so that:
+      - left of pivot => less than pivot
+      - right of pivot => greater than pivot
+      - 2 1 [3] 6 7 4 5 8
+    - Note: puts pivot in its "rightful position"
+*** Two cool facts about partition
+    - linear (O(n)) time, no extra memory
+    - reduces problem size
+*** QuickSort: high-level description
+    - Hoare circa 1961
+    - QuickSort(array A, length n)
+      - if n = 1 return
+      - p = ChoosePivot(A, n)
+      - partition A around p
+      - recursively sort 2nd part
+      - recursively sort 1st part
+** Partitioning around a Pivot
+*** The easy way out
+    - Note: using O(n) extra memory, easy to partition around pivot in O(n) time
+*** In-place implementation
+    - *Assume*: pivot = 1st element of array (if not, swap pivot <-> 1st element
+      as preprocessing step)
+    - *high-level idea*: [p] [<p] [>p] [unpartitioned]
+      - single scan through array
+      - invariant: everything looked at so far is partitioned
+*** Partition example
+    - [p] [<p] i [>p] j [?]
+    - [3] ij [8 2 5 1 4 7 6]
+    - [3] i [8] j [2 5 1 4 7 6]
+    - [3] [2] i [8] j [5 1 4 7 6]
+    - [3] [2] i [8 5] j [1 4 7 6]
+    - [3] [2 1] i [5 8] j [4 7 6]
+    - [3] [2 1] i [5 8 4] j [7 6]
+    - [3] [2 1] i [5 8 4 7] j [6]
+    - [3] [2 1] i [5 8 4 7 6] j
+    - [1 2] [3] [5 8 4 7 6]
+*** Pseudocode for partition
+    - partition(A, l, r) #input = A[l...r]
+    - p=A[l]
+    - i=l+1
+    - for j=l+1 to r
+      - if A[j] < p #if A[j]>p, do nothing
+        - swap A[j] and A[i]
+        - i=i+1
+    - swap A[l] and A[i-1]
