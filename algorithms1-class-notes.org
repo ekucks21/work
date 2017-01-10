@@ -359,3 +359,35 @@ x*y =
         - swap A[j] and A[i]
         - i=i+1
     - swap A[l] and A[i-1]
+*** Running Time
+    - running time = O(n), where n=r-l+1 is the  length of the input of the (sub)array
+    - *reason*: O(1) work  per  array entry
+    - also: clearly works in place (repeated swaps)
+*** Correctness
+    - *claim*: the for loop maintains  the invariant: [p] [<p] i [>p] j [?]
+    - A{l+1},...,A[i-1] are all less than the pivot
+    - A[i],...,A[j-1] are all greater than pivot
+    - consequence: at end of for loop, have [p] [<p] i [>p] j => after final
+      swap, array partitioned around pivot
+** Correctness of Quicksort
+*** Induction Review
+    - let  P(n) = assertion parameterized  by positive  integers n
+    - for us: P(n) is "quicksort correctly sorts every input array of length n"
+    - how to prove P(n) for all n>= 1 by induction:
+      - base case: directly prove that P(1) holds
+      - inductive step: for  every  n>=2, prove that: if P(k) holds for  all
+        k<n, then P(n) holds as well
+*** correctness
+    - P(n) = "quicksort correctly sorts every input array  of length n"
+    - *claim*: P(n) holds for every n>=1 (no  matter how pivot is chosen)
+    - proof by induction:
+      - base case:  every  input array of length 1 is already sorted. Quicksort
+        returns  the input array, which  is correct  (P(1) holds)
+      - inductive step:  Fix n>=2. Fix some input array of length n.
+        - Need to show: if P(k) holds for all k<n, then  P(n)  holds as well
+        - recall: quicksort first partitions A around some pivot point  p.
+        - note: pivot winds up in correct position. Let k_1,k_2=lengths of 1st,
+          2nd parts of partitioned array (k_1, k_2 < n)
+        - by inductive hypothesis: 1st, 2nd parts get sorted correctly by
+          recursive calls (using P(k_1), P(k_2))
+        - so: after recursive calls,  entire array  correctly sorted
