@@ -391,3 +391,42 @@ x*y =
         - by inductive hypothesis: 1st, 2nd parts get sorted correctly by
           recursive calls (using P(k_1), P(k_2))
         - so: after recursive calls,  entire array  correctly sorted
+** Choosing a good pivot
+   - Q: running time of Quicksort?
+   - A: depends on the  quality  of the pivot
+   - if doing Quicksort on already sorted array  and choosing first element  as
+     pivot, the  running time would be theta(n^2)
+     - reason: [] [p] [>p]
+     - runtime: >= n + (n-1) + (n-2)...+ 1
+     - 1st n/2 terms all  at  least n/2
+   - if doing Quicksort and every recursive  call chooses the median element,
+     the runtime would be theta(n log n)
+     - reason: let T(n) = running time  on arrays of size n
+     - then: T(n) <= 2T(n/2) + O(n) => T(n) = O(n log n) [like MergeSort]
+*** Random pivots
+    - key question: how to choose pivots?
+    - *big idea*: random pivots
+    - that is: in every recursive call, choose the pivot randomly  (each element
+      equally likely)
+    - hope: a random  pivot is "pretty good often enough"
+    - intuition:
+      - if always get a 25-75 split, good enough for  O(n log n)
+        running time [non-trivial exercise: prove via recursion tree]
+      - half of elements give  a 25-75  split or better
+      - Q: does this really work?
+*** Average running time of quicksort
+    - quicksort theorem: for every  input array of a length n, the average
+      running time of quicksort with random pivots  is O(n log n)
+    - note: holds for every input  (no assumptions on the data)
+    - recall  our guiding  principles
+    - "average" is over random choices made by the algorithm (ie pivot choices)
+** Probability Review
+*** Sample spaces
+    -  sample space 
+** Analysis 1: a decomposition principle
+*** Necessary background
+    - assumption: you know and remember  (finite) sample  spaces, random
+      variables, expectation,  linearity of expectation. For review:
+      - probability review 1 (video)
+      - lehman-leighton notes (free pdf)
+      - wikibook on discrete probability
