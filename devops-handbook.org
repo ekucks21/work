@@ -166,3 +166,23 @@
      whether the team is supporting a 30 year old mainframe application, a Java
      application, or a mobile application"
 ** Start with the most sympathetic and innovative groups
+** Expanding devops across our organization
+   - demonstrate early wins and broadcast success by breaking  up large
+     improvement goals into small, incremental steps
+   - ideal  phases for change agents to build and expand coalition and support:
+     - find innovators and early adopters
+       - ideally,  respected  with high degree  of influence
+     - build  critical mass and silent majority
+     - identify the holdouts
+       - high profile, influential detractors
+       - tackle only after achieving silent majority
+* Understanding the work in our value stream, making it visible, and expanding it across the organization
+** Identifying the teams supporting our value stream
+   - product owner
+   - development
+   - qa
+   - operations
+   - infosec
+   - release managers
+   - technology  executives or value stream manager
+** Create a value stream map to see the work
