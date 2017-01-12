@@ -245,4 +245,50 @@
      demonstrable outcomes
 ** Reserve 20% of cycles for non-functional requirements and reducing technical debt
 *** Case Study: Operation InVersion at LinkedIn (2011)
-    - monolithic Java application that se
+    - initial state
+      - monolithic Java application (Leo) that served every page through servlets and
+        managed jdbc connections to various oracle databases
+      - in 2010, most new development was in new services outside of Leo but Leo
+        was only deployed every two weeks
+      - Leo often went down in production, difficult to troubleshoot and recover,
+        difficult to release new code
+      - "when LinkedIn would try to  add a bunch of new things at  once, the site
+        would crumble into a broken mess, requiring engineers to work long into
+        the night and fix the problems"
+    - solution
+      - decided to stop work on new features and focus on fixing infrastructure:
+        Operation InVersion
+      - developed suite of software and tools to help develop code for site
+      - engineers could develop service, inspect it with automated tests, and
+        launch it into production
+      - major upgrades now hapen three times a day
+*** Increase the visibility of work
+    - need up to date data
+    - constantly revise what we measure to make sure it's helping us understand
+      progress toward current target conditions
+** Use tools to reinforce desired behavior
+   - tooling should reinforce that development and operations have shared goals,
+     shared backlog of work, in common work system using shared vocabulary so
+     that work can be prioritized globally
+   - chat rooms reinforce shared goals by allowing fast flow of information
+     - have to monitor  so that there  aren't too many interruptions
+* How to design our organization and architecture with Conway's law in mind
+  - Conway's law "organizations which design systems are constrained to produce
+    designs which are copies of the communication structures  of these
+    organizations...The larger an organization is, the less  flexibility it has
+    and the more pronounced the phenomenon"
+  - example:  Etsy Sprouter
+    - problem
+      - sprouter hid the database from the application
+      - required devs to ask dbas for any new stored procedures, had to wade
+        through bereaucracy
+      - conway's law, sprouter arose because two separate teams, dev and dbas
+      - but sprouter, which was intended to isolate the teams from each other,
+        became another layer that had to be maintained anytime anything in either
+        team changed
+    - solution
+      - moved all business logic from database into application, removing need
+        for sprouter
+      - by eliminating sprouter, they eliminated cross team dependencies, number
+        of handoffs, and increased speed/success of production deployments
+** Organ
