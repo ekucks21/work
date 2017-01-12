@@ -186,3 +186,63 @@
    - release managers
    - technology  executives or value stream manager
 ** Create a value stream map to see the work
+   - document that answers question "how is work performed?"
+   - example
+     - customer request or business hypothesis coming through product owner
+     - development  implements  at some point
+     - build integrated, tested, and finally deployed
+   - often  value stream has many steps with hundreds of people involved
+   - documenting is complex and may require a  multi-day workshop  with all key
+     constituents present
+   - goal not to document every step, but to sufficiently understand the areas
+     in value stream jeopardizing our goals of fast flow, short lead times,
+     and reliable customer outcomes
+   - focus on:
+     - places where work must wait weeks or even months, such as getting
+       production-like  environments, change approval processes, or security
+       review processes
+     - places where significant rework is  generated or received
+   - first pass should only have high  level process blocks, maybe five to fiften
+   - each process block should include lead time and process time, as well as
+     the percent C/A (complete/accurate) as measured by downstream consumers
+   - identify which metric should be improved then construct future value map as
+     target condition
+   - brainstorm hypotheses and  countermeasures to achieve  desired improvement,
+     perform experiments  to test hypotheses, and interpret results to determine
+     whether the hypotheses were correct
+** Creating a dedicated transformation team
+   - how to have change while still  maintaining day to day  operation
+     - assign members of dedicated transformation  team to  devops
+       transformation efforts solely
+     - select team members who are generalists with wide array of skills
+     - select team members who have longstanding and mutually respectful
+       relationships with rest of organization
+     - create separte  physical space for dedicated team if  possible
+** Agree on a shared goal
+   - achievement of the goal  should create obvious value for the organization
+   - define a measurable goal with clearly defined deadline, between  six
+     months and two years
+   - don't have too many of these going on at the same time
+   - examples
+     - reduce the percentage of the budget spent on product  support  and
+       unplanned  work by 50%
+     - ensure lead time from code check-in to production release is  one week or
+       less for 95% of changes
+     - ensure releases can always  be  performed during normal business hours
+       with zero downtime
+     - integrate all the required information security controls into the
+       deployment pipeline to pass all  required compliance  requirements
+   - have several  week iterations to progress by steps towards larger goal
+** Keep our improvement planning horizons short
+   - flexibility  and ability to reprioritize and replan quickly
+   - decrease delay between work expended and improvement realized, which
+     strengthens feedback  loop
+   - faster learning generated from first iteration
+   - reduction  in activation energy to get improvements
+   - quicker realization of improvements that make meaningful differences in
+     daily work
+   - less risk that our project is killed before we can generate any
+     demonstrable outcomes
+** Reserve 20% of cycles for non-functional requirements and reducing technical debt
+*** Case Study: Operation InVersion at LinkedIn (2011)
+    - monolithic Java application that se
