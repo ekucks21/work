@@ -422,7 +422,35 @@ x*y =
     - "average" is over random choices made by the algorithm (ie pivot choices)
 ** Probability Review
 *** Sample spaces
-    -  sample space 
+    - sample space omega = "all possible outcomes" [in algorithms, omega is
+     usually  finite]
+    - also: each  outcome i element of omega has a probability  p(i)  >= 0
+    - constraint: sum_(elements of omegaa) p(i) =  1
+    - example #1: rolling 2  dice. omega = {(1,1),(2,1),(3,1),...,(5,6),(6,6)}
+      and p(i)=1/36 for all i in omega
+    - example #2: choosing a random pivot in outer quicksort call. omega =
+      {1,2,...,n} (index of  pivot) and p(i)=1/n for all i in omega
+*** Events
+    - note: C= means subset or equal to
+    - an event is a subset S C= omega
+    - the probability of an event S is sum_(i in S) p(i)
+    - the probability of the  event where the  sum  of the two  dice  is 7 is  1/6
+      - S = {(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)}
+      - Pr[S]=6/36=1/6
+    - the probability  for the event where the chosen quicksort pivot gives a
+      25-75 split or better is 1/2
+      - S={(n/4+1)th smallest element,...,(3n/4)th smallest element}
+      - Pr[S]=(n/2)/n=1/2
+*** Random  variables
+    - a random variable X is a real-valued function
+      - X: omega -> |R
+    - example 1: sum of the two dice
+    - example 2: size of subarray passed to the 1st recursive call
+**** Expectation
+     - let X: omega -> |R be a random variable
+     - the expectation E[X] of X = average value of  X
+       - = sum_(i in omega) X(i) * p(i)
+     - the expectation of the sum of two dice is  7
 ** Analysis 1: a decomposition principle
 *** Necessary background
     - assumption: you know and remember  (finite) sample  spaces, random
