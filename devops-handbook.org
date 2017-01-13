@@ -345,3 +345,26 @@
      they learn to live with the errors they've made and how to make the product
      more resilient/useful in production
 ** Design team boundaries in accordance with Conway's law
+   - separate testers and devs can create communication issues
+** Create loosely coupled architectures to enable developer productivity and safety
+   - services that can be updated independently of each other
+   - no shared databases between services
+   - bounded contexts between services enforce encapsulation - devs should only
+     need to know other services' api
+** Keep team sizes small (the "two-pizza team" rule)
+   - usually about five to ten people
+   - important effects:
+     - clear, shared understanding of the system
+     - limit growth rate of product or service. Helps ensure that people
+       continue to understand service
+     - decentralizes power and enables autonomy. Team lead works with executive
+       team to determine key metric by which team can measure its progress
+     - small teams allows more leadership experience without catastrophic results
+*** Case study: API enablement at Target (2015)
+    - problem
+      - took ten different teams to provision server
+      - when things broke, stopped making changes out of fear
+      - core data locked up in legacy mainframes
+      - multiple sources of truth, with different teams, data structures, priorities
+      - long amounts of time spent on integration between various systems, with
+        lots of manual testing
