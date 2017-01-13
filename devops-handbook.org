@@ -291,4 +291,57 @@
         for sprouter
       - by eliminating sprouter, they eliminated cross team dependencies, number
         of handoffs, and increased speed/success of production deployments
-** Organ
+** Organizational Archetypes
+   - functional
+     - optimize for expertise, division of labor, or reducing cost
+     - centralize expertise
+     - tall hierarchical structures
+   - matrix
+     - attempt to combine functional and market
+     - complicated organizational structure, such as people reporting to two
+       different managers
+   - market
+     - optimize for responding quickly to customer needs
+     - flat structure, composed of multiple cross functional disciplines, often
+       leading to potential redundancies across the company
+     - devops organizations tend to use this structure
+** Problems often caused by overly functional orientation ("optmizing for cost")
+   - slow lead time because of many handoffs between functional groups (devs,
+     dbas, SAs, etc)
+   - person doing the work has little awareness of how it contributes to the
+     value stream ("Someone told me to configure this server"), creating a
+     creativity and motivation vacuum
+   - problem increased when each operations functional group has to serve
+     multiple development teams who all compete for their cycles
+   - development teams have to escalate issues to managers who can globally
+     prioritize and this cascades down to the functional groups
+** Enable market-oriented teams ("optimizing for speed")
+   - market oriented teams responsible for development, testing, securing,
+     deploying, and supporting service in production
+   - enables each team to deliver independently from other teams
+** Making functional orientation work
+   - work is prioritized transparently and sufficient slack in system to allow
+     high-priority work to be completed quickly
+   - enabled by automated self-service platforms
+   - Mike Rother wrote in Toyota Kata "As tempting as it seems, one cannot
+     reorganize your way to continuous improvement and adaptiveness. What is
+     decisive is not the form of the organization, but how people act and react.
+     The roots of Toyota's success lie not in its organizational structures, but
+     in developing capability and habits in its people. It surprises many, in
+     fact, to find that Toyota is largely organized in a traditional,
+     functional-department style"
+** Testing, Operations, and Security as everyone's job, every day
+   - facebook was struggling with issues in production
+   - one solution was to have every engineer, engineering manager, and architect
+     rotate on-call duty for the services they built
+** Enable every team member to be a generalist
+   - if everyone is only a specialist, too many handoffs
+   - specialize but also generalize
+   - invest in the people we have by encouraging them to learn and grow
+   - yes they may be more expensive than specialists but they are also much more productive
+** Fund not projects, but services and products
+   - don't move developers to another project after initial development is done
+   - have developers stick around on same project for the brownfield phase so
+     they learn to live with the errors they've made and how to make the product
+     more resilient/useful in production
+** Design team boundaries in accordance with Conway's law
