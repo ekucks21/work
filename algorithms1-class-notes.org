@@ -451,6 +451,34 @@ x*y =
      - the expectation E[X] of X = average value of  X
        - = sum_(i in omega) X(i) * p(i)
      - the expectation of the sum of two dice is  7
+**** Linearity of Expectation
+     - *claim*: let x_1,...,X_n be random variables  defined on  omega.  Then:
+       - E[sum_(i=1)^n X_j] = sum_(i=1)^n E[X_j]
+       - crucially: holds even when X_j's are  not independent
+     - example #1:
+       - if  X_1, X_2 = the two dice, then E[X_j] = 1/6(1+2+3+4+5+6) = 3.5
+       - by linear expectation: E[X_1]+E[X_2]=E[k_1]+E[X_2]=3.5+3.5=7
+**** Linearity of Expectation (Proof)
+     - sum_(j=1)^n E[X_j] = sum_(j=1)^n sum_(i in set omega) X_j(i)p(i)
+     - = sum_(i in set omega) sum_(j=1)^n X_j(i)p(i)
+     - = sum_(i in set omega) p(i) (sum_(j=1)^n X_j(i))
+     - = E[sum_(j=1)^n X_j]
+**** Example: Load Balancing
+     - Problem: need to  assign n processes to n servers
+     - proposed  solution: assign each process to  a random server
+     - question: what is expected number of processes assigned to a server?
+     - sample space  omega = all n^n assignments of processes to servers, each
+       equally likely
+     - let y=total number  of processes  assigned to first server
+     - goal: compute E[y]
+     - let x_j=
+       - 1 if  jth process assigned to first server
+       - 0 otherwise
+       - binary random variables are called indicator random variables
+       - note: y=sum_(j=1)^n X_j
+     - we have
+       - E[y]=E[sum_(j=1)^n X(j)] #since y=sum_(j=1)^n X_j)
+       - 
 ** Analysis 1: a decomposition principle
 *** Necessary background
     - assumption: you know and remember  (finite) sample  spaces, random
