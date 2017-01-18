@@ -478,7 +478,40 @@ x*y =
        - note: y=sum_(j=1)^n X_j
      - we have
        - E[y]=E[sum_(j=1)^n X(j)] #since y=sum_(j=1)^n X_j)
-       - 
+       - = sum_(j=1)^n E[X_j] #lin exp
+       - = sum_(j=1)^n (Pr[X_j=0]*0  + Pr[X_j=1]*1)
+       - = sum_(j=1)^n (1/n)
+       - = 1
+*** Conditional probability
+    - let x,y C= omega  be  events
+    - then Pr[x|y] ("x given y") = Pr[x n y]/Pr[y]
+    - given that the sum of  the  two dice is 7, the probability that at least
+      one die  is a 1 is 1/3
+      - x =  at least one die is a 1
+      - y = sum of two dice = 7
+        - = {(1,6), (2,5), (3,4), (4,3), (5,2), (6,1)}
+        - => x n y  = {(1,6), (6,1)}
+*** Independence
+**** Independence (of Events)
+     - *definition*: events x,y c= omega are independent if (and only if) Pr[x n
+       y] = Pr[x] * Pr[y]
+     - Pr[x|y] = Pr[x]
+     - Pr[y|x] = Pr[y]
+     - warning: can  be a  very subtle  concept (intuition is often incorrect!)
+**** Independence (of  random variables)
+     - *definition*: random variables A,B (both defined on omega) are
+       independent <=> the events Pr[A=a], Pr[B=b]  are independent for  all
+       a,b. (<=>  Pr[A=a and B=b] = Pr[A=a] * Pr[B=b])
+     - *claim*: if  A,B are independent,  then E[A*B] = E[A] * E[B]
+     - *proof*: E[A*B] =  sum_(a,b) (a*b) * Pr(A=a  and B=b)
+     - = sum_(a,b) (a*b) * Pr[A=a] * Pr[B=b] #since A,B independent
+     - = sum_a a *  Pr[A=a](sum_b b * Pr[B=b])
+**** Example
+     - let x_1, x_2 in set {0,1} be random, and x_3 = x_1 xor x_2
+     - formally: omega = {000,  101, 011, 110} each equally likely
+     - *claim*: x_1 and x_3  are independent random variables
+     - *claim*: x_1*x_3 and  x_2 are not independent random variables
+     - *proof*: suffices to show that E[x_1,x_3*x_2] != E[x_1,x_3]*E[x_2]
 ** Analysis 1: a decomposition principle
 *** Necessary background
     - assumption: you know and remember  (finite) sample  spaces, random
