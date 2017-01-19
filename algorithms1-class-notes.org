@@ -511,7 +511,12 @@ x*y =
      - formally: omega = {000,  101, 011, 110} each equally likely
      - *claim*: x_1 and x_3  are independent random variables
      - *claim*: x_1*x_3 and  x_2 are not independent random variables
-     - *proof*: suffices to show that E[x_1,x_3*x_2] != E[x_1,x_3]*E[x_2]
+     - *proof*: suffices to show that E[x_1*x_3*x_2] != E[x_1,x_3]*E[x_2]
+       - E[x_1*x_3*x_2] = 0
+       - E[x_1*x_3] = 1/4
+       - E[x_2] = 1/2
+       - 1/2 * 1/4 = 1/8
+       - 0 != 1/8
 ** Analysis 1: a decomposition principle
 *** Necessary background
     - assumption: you know and remember  (finite) sample  spaces, random
@@ -519,3 +524,31 @@ x*y =
       - probability review 1 (video)
       - lehman-leighton notes (free pdf)
       - wikibook on discrete probability
+*** Preliminaries
+    - fix input array A of length n
+    - *sample space omega* = all possible outcomes of random choices in quicksort
+      (ie pivot sequences)
+    - *key random variable*: for p in set omega, C(p) = # of comparisons between
+      two input elements made by quicksort (given random choices p)
+    - *lemma*: running time of quicksort dominated by comparisons
+      - there is a constant c such that for all p in omega RT(p) <= c * C(p)
+    - *remaining goal*: E[C] = O(n log n)
+*** Building blocks
+    - note: can't apply master method [random, unbalanced subproblems]
+    - A = fixed input array
+    - notation: z_i=ith smallest element of A
+    - for r in omega, indies i<j, let
+      - X_ij(p) = # of times z_i,z_j get compared in quicksort with pivot
+        sequence r
+    - for two fixed elements in array, the number of times these two elements
+      can be compared during the execution of quicksort is 0 or 1
+      - can't be compared twice
+        - two elements compared only when one is the pivot, which is excluded
+          from future recursive calls
+        - each x_ij is an indicator (ie 0-1) random variable
+*** A decomposition approach
+    - so: C(p) = # of comparisons between input elements
+      - x_ij(p) = # of comparisons between z_i and z_j
+    - thus: for all p, C(p)=sum_(i=1)^(n-1) sum_(j=i+1)^n x_ij(p)
+    - by linearity of expectation: E[C] = sum_(i=1)^(n-1) sum_(j=i+1)^n E[x_ij]
+    - 
