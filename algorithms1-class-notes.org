@@ -551,4 +551,39 @@ x*y =
       - x_ij(p) = # of comparisons between z_i and z_j
     - thus: for all p, C(p)=sum_(i=1)^(n-1) sum_(j=i+1)^n x_ij(p)
     - by linearity of expectation: E[C] = sum_(i=1)^(n-1) sum_(j=i+1)^n E[x_ij]
-    - 
+    - since E[x_ij] = 0 * Pr[x_ij=0] + 1 * Pr[x_ij=1] = Pr[x_ij=1]
+    - thus E[C] = sum_(i=1)^(n-1) sum_(j=i+1)^n Pr[z_i, z_j get compared] (*)
+*** A general decomposition principle
+    - identify random variable Y that you really care about
+    - express Y as sum of indicator random variables
+      - Y = sum_(p=1)^m x_p
+    - apply linearity of expectation:
+      - E[Y] = sum_(p=1)^m Pr[x_p=1]
+** Analysis 2: the key insight
+*** The story so far
+    - C(p) = # of comparisons quicksort makes with pivots p
+    - x_ij(p) = # of times z_i and z_j get compared (ith,jth smallest entries in array)
+    - *key claim*: for all i < j, Pr[z_i,z_j get compared] = 2/(j-1+1)
+*** Proof of key claim
+    - fix z_i,z_j with i < j
+    - consider the set z_i,z_i+1,...,z_j-1,z_j
+    - *inductively*: as long as none of these are chosen as a pivot, all are
+      passed to the same recursive call
+    - consider the first among z_i, z_i+1,...,z_j-1,z_j that gets chosen as a pivot
+      - if z_i or z_j get chosen first, then z_i and z_j get compared
+      - if one of z_i+1,...,z_j-1 gets chosen first, then z_i and z_j are never
+        compared [split into different recursive calls]
+    - note: since pivots always chosen uniformly at random, each of
+      z_i,z_i+1,...,z_j-1,z_j is equally likely to be the first
+    - => Pr[z_i,z_j get compared] = 2/(j-i+1)
+    - so: E[C] = sum_(i=1)^(n-1) sum_(j=i+1)^n 2/(j-i+1)
+** Analysis 3: final calculations
+*** The story so far
+    - E[C] = 2 * sum_(i=1)^(n-1) sum_(j=i+1)^n 1/(j-i+1) # O(n^2) terms
+      - how big can inner sum be?
+    - note: for each i, the inner sum is
+      - sum_(j=i+1)^n 1/(j-i+1) = 1/2 + 1/3 + 1/4 + ...
+    - so: E[C] <= 2 * n * sum_(k=2)^n 1/k
+      - claim: this is <= n log n
+*** Completing the proof
+    - sum_(k=2)^n 1/k <= integral_1^n 1/x d*x = ln * 
