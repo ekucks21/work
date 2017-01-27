@@ -368,3 +368,29 @@
       - multiple sources of truth, with different teams, data structures, priorities
       - long amounts of time spent on integration between various systems, with
         lots of manual testing
+    - solution
+      - API Enablement Team
+      - internal team, no contractors, to ensure low lag time and top
+        engineering skill
+      - took over ops responsibilities
+      - started using cassandra and kafka for scaling (asked permission, was
+        refused, and did it anyway because they needed it)
+      - in following two years, enabled fifty-three new business capabilities
+      - eighty deployments per week
+      - digital sales increased 42% during 2014
+      - 280k in-store pickup orders in 2015 black friday
+* How to get great outcomes by integrating operations into the daily work of development
+** Create shared services to increase developer productivity
+   - most of these services should be self service, without requiring submitting
+     a ticket, so that operations doesn't become a bottleneck
+   - "without these self-service operations platforms, the cloud is just
+     Expensive Hosting 2.0"
+   - examples
+     - shared version control repository with pre-blessed security libraries
+     - deployment pipeline that automatically runs code quality and security
+       scanning tools
+     - deploys into known, good environments that already have production
+       monitoring tools installed
+   - platform team can educate development teams and spread best practices and
+     tools across teams so that it's easier for developers to move between teams
+     without always having to relearn a new set of tools
