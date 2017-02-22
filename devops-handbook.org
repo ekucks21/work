@@ -394,3 +394,39 @@
    - platform team can educate development teams and spread best practices and
      tools across teams so that it's easier for developers to move between teams
      without always having to relearn a new set of tools
+** Embed ops engineers into our service teams
+   - product teams often have the budget to fund hiring these ops engineers
+   - these ops engineers are driven by team priorities, not overall priorities
+     and internal ops concerns
+   - efficient way to cross-train operations knowledge and expertise into
+     service team
+** Assign an ops liason to each service team
+   - liason responsible for understanding:
+     - what is the new product functionality and why we're building it
+     - how it works as it pertains to operability, scalability, and observability
+     - how to monitor and collect metrics to ensure the progress, success, or
+       failure of the functionality
+     - any departures from previous architectures and patterns, and the
+       justifications for them
+     - any extra needs for infrastructure and how usage will affect
+       infrastructure capacity
+     - feature launch plans
+** Integrate ops into dev rituals
+** Invite ops to our dev standups
+** Invite ops to our dev retrospectives
+** Make relevant ops work visible on shared kanban boards
+   - put operations work relevant to product delivery on kanban board
+* Part III: The First Way - The technical practices of flow
+** Create the foundations of our deployment pipeline
+   - production like environments at every stage of value stream
+   - created in automated, on demand way
+** Enable on demand creation of dev, test, and production environments
+   - use automation for any or all of the following
+     - copying a virtualized environment (eg vmware image, running a vagrant
+       script, booting an amazon machine image file in ec2)
+     - building an automated environment creation process that starts from "bare
+       metal" (eg PXE install from a baseline image)
+     - using "infrastructure as code" configuration management tools (eg puppet,
+       chef, ansible salt, cfeengine, etc)
+     - using automated operating system configuration tools (eg solaris
+       jumpstart, red hat kickstart, debian preseed)
