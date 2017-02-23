@@ -635,3 +635,28 @@ x*y =
       time of RSelect is O(n)
     - holds for every iput (no assumptions on data)
     - "average" is over random pivot choices made by the algorithm
+** Randomized Selection - Analysis
+*** Proof 1: Tracking progress via phases
+    - note: RSelect uses <= cn operations outside of the recursive call (for
+      some constant c > 0) (from partitioning)
+    - notation: RSelect is in phase j if current array size between
+      (3/4)^(j+1) * n and (3/4)^j * n
+      - x_j = number of recursive calls during phase j
+    - note: running time of RSelect <= sum_(phases j) x_j * c * (3/4)^j*n
+      - 3/4^j*n <= array size during phase j
+      - c = work per phase of subproblem
+      - x_j = # of phase j subproblems
+*** Proof II: reduction to coin flipping
+    - x_j = # of recursive calls during phase j
+    - note: if RSelect chooses a pivot giving a 25-75 split or better then
+      current phase ends! (new subarray length at most 75% of old length)
+    - recall: probability of 25-75 split or better is 50%
+    - so: E[x_j] <= expected number of times you need to flip a fair coin to get
+      one "heads" (heads=good pivot, tails=bad pivot)
+*** Proof III: coin flipping analysis
+    - let N = number of coin flips until you get heads (a "geometric random variable")
+    - note: E[N] = 1 + 1/2*E[N]
+      - 1 = 1st coin flip
+      - 1/2 = probability of tails
+      - E[N] = # of further coin flips needed in this case
+    - solution: E[N] = 2 (recall E[x_j] <= E[N])
