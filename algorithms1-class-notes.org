@@ -660,3 +660,10 @@ x*y =
       - 1/2 = probability of tails
       - E[N] = # of further coin flips needed in this case
     - solution: E[N] = 2 (recall E[x_j] <= E[N])
+*** Putting it all together
+    - expected running time of RSelect <= E[cn sum_(phase j) (3/4)^j * x_j]
+      - = cn sum_(phase j) (3/4)^j E[x_j]
+      - E[x_j] <= E[# of coin flips n] = 2
+      - <= 2 cn sum_(phase j) (3/4)^j
+      - sum_(phase j) (3/4)^j <= 1/(1 - 3/4) = 4 (geometric sum)
+      - <= 8cn = O(n)
