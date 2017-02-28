@@ -420,42 +420,52 @@
 ** Create the foundations of our deployment pipeline
    - production like environments at every stage of value stream
    - created in automated, on demand way
-** Enable on demand creation of dev, test, and production environments
-   - use automation for any or all of the following
-     - copying a virtualized environment (eg vmware image, running a vagrant
-       script, booting an amazon machine image file in ec2)
-     - building an automated environment creation process that starts from "bare
-       metal" (eg PXE install from a baseline image)
-     - using "infrastructure as code" configuration management tools (eg puppet,
-       chef, ansible salt, cfeengine, etc)
-     - using automated operating system configuration tools (eg solaris
-       jumpstart, red hat kickstart, debian preseed)
-     - assembling an environment from a set of virtual images or containers (eg
-       vagrant, docker)
-     - spinning up a new environment in a public cloud (eg amazon web services,
-       google app engine, microsoft azure), private cloud, or other paas (platform
-       as a service, such as openstack or cloud foundry, etc)
-   - providing developers environment they fully control allows them to test
-     changes to environment, get feedback quickly, etc
-** Create our single repository of truth for the entire system
-   - put everything, including QA, operations, infosec, etc into revision control
-   - check in the following assets to our shared version control repository
-     - all application code and dependencies (eg libraries, static content, etc)
-     - any script used to create database schemas, application reference data, etc
-     - all environment creation tools and artifacts (eg vmware or ami images,
-       puppet or chef recipes, etc)
-     - any file used to create containers (eg docker or rocket definition or
-       composition files)
-     - all supporting automated tests and any manual test scripts
-     - any script that supports code packaging, deployment, database migration,
-       and environment provisioning
-     - all project artifacts (eg requirements docs, deployment procedures,
-       release notes, etc)
-     - all cloud configuration files (eg aws cloudformation templates, microsoft
-       azure stack dsc files, openstack heat)
-     - any other script or configuration information required to create
-       infrastructure that supports multiple services (eg enterprise service
-       buses, database management systems, dns zone files, configuration rules
-       for firewalls, and other networking devices)
-     - must be able to recreate pre-production and build processes as well as
-       production environments (ie tools, compilers, testing)
+*** Enable on demand creation of dev, test, and production environments
+    - use automation for any or all of the following
+      - copying a virtualized environment (eg vmware image, running a vagrant
+        script, booting an amazon machine image file in ec2)
+      - building an automated environment creation process that starts from "bare
+        metal" (eg PXE install from a baseline image)
+      - using "infrastructure as code" configuration management tools (eg puppet,
+        chef, ansible salt, cfeengine, etc)
+      - using automated operating system configuration tools (eg solaris
+        jumpstart, red hat kickstart, debian preseed)
+      - assembling an environment from a set of virtual images or containers (eg
+        vagrant, docker)
+      - spinning up a new environment in a public cloud (eg amazon web services,
+        google app engine, microsoft azure), private cloud, or other paas (platform
+        as a service, such as openstack or cloud foundry, etc)
+    - providing developers environment they fully control allows them to test
+      changes to environment, get feedback quickly, etc
+*** Create our single repository of truth for the entire system
+    - put everything, including QA, operations, infosec, etc into revision control
+    - check in the following assets to our shared version control repository
+      - all application code and dependencies (eg libraries, static content, etc)
+      - any script used to create database schemas, application reference data, etc
+      - all environment creation tools and artifacts (eg vmware or ami images,
+        puppet or chef recipes, etc)
+      - any file used to create containers (eg docker or rocket definition or
+        composition files)
+      - all supporting automated tests and any manual test scripts
+      - any script that supports code packaging, deployment, database migration,
+        and environment provisioning
+      - all project artifacts (eg requirements docs, deployment procedures,
+        release notes, etc)
+      - all cloud configuration files (eg aws cloudformation templates, microsoft
+        azure stack dsc files, openstack heat)
+      - any other script or configuration information required to create
+        infrastructure that supports multiple services (eg enterprise service
+        buses, database management systems, dns zone files, configuration rules
+        for firewalls, and other networking devices)
+    - must be able to recreate pre-production and build processes as well as
+      production environments (ie tools, compilers, testing)
+    - whether ops used version control higher predictor for it performance and
+      organizational performance than whether dev used version control
+      - why? orders of magnitude more configurable settings in environment than code
+*** Make infrastructure easier to rebuild than to repair
+    - immutable infrastructure
+    - prevent uncontrolled configuration variances
+      - disable remote logins to production servers
+      - routinely kill or replace production instances
+*** Modify our definition of development "done" to include running in production-like environments
+** Enable Fast and Reliable Automated Testing
