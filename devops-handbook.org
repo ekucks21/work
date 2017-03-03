@@ -469,3 +469,18 @@
       - routinely kill or replace production instances
 *** Modify our definition of development "done" to include running in production-like environments
 ** Enable Fast and Reliable Automated Testing
+*** Continuously build, test, and integrate our code and environments
+    - our build and test processes can run all the time, independent of the work
+      habits of individual engineers
+    - a segregated build and test process ensures that we understand all the
+      dependencies required to build, package, run, and test our code (ie
+      removing the "it worked on the developer's laptop, but it broke in
+      production" problem)
+    - we can package our application to enable the repeatable installation of
+      code and configurations into our environment (eg on linux rpm, yum, npm;
+      on windows, oneget; alternatively framework-specific packaging systems can
+      be used, such as ear and war files for java, gems for ruby, etc)
+    - instead of putting our code in packages, we may choose to package our
+      applications into deployable containers (eg docker, rkt, lxd, amis)
+    - environments can be made more production-like in a way that is consistent
+      and repeatable 
