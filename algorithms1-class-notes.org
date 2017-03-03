@@ -734,4 +734,74 @@ x*y =
       |  3 |   1 |  2 | 10 |
 *** Rough recurrence (revisited)
     - T(1) = 1, T(n) <= cn + T(n/5) + T(7/10*n)
-    - note: different-sized
+    - note: different-sized subproblems => can't use master method!
+    - strategy: "hope and check"
+    - hope: there is some constant a [independent of n] such that T(n) <= an for
+      all n >= 1 (if true, then T(n) = O(n) and algorithm is linear-time)
+*** Analysis of rough recurrence
+    - claim: let a = 10c
+      - then T(n) <= an for all n >= 1
+    - proof: by induction on n
+    - base case: T(1) = 1 <= a * 1 (since a >= 1)
+    - inductive step: [n > 1] inductive hypothesis: T(k) <= ak for all k < n
+      - we have T(n) <= cn + T(n/5) + T(7/10 * n)
+      - <= cn + a(n/5) + a(7/10 * n)
+      - = n(c + 9/10 a) = an
+** Omega(n log n) lower bound for comparison based sorting
+*** a sorting lower bound
+    - theorem: every "comparison-based" sorting algorithm has worst-case running
+      time beta(n log n) [assume deterministic, but lower bound extends to
+      randomized algorithms]
+    - comparison-based sort: accesses input array elements only via comparisons
+      - = "general-purpose sorting method"
+    - *examples*: MergeSort, QuickSort, HeapSort
+    - *non-examples*: BucketSort (good for data from distributions), CountingSort
+      (good for small integers), RadixSort
+*** proof idea
+    - fix a comparison-based sorting method and an array length n
+    - => consider input arrays containing {1,2,3...,n} in some order
+    - => n! such inputs
+    - suppose algorithm always makes <= k comparisons to correctly sort these n! inputs
+    - => across all n! possible inputs, algorithms exhibits <= 2k distinct
+      executions (ie resolution of the comparisons)
+    - by the pigeonhole principle: if 2k < n!, execute identically on two
+      distinct inputs => must get one of them incorrect
+    - so: since method is correct, 2k >= n!
+    - >= (n/2)^(n/2)
+    - => k >= n/2 log_2(n/2) n/2 = beta(n log n)
+* Graphs and the Contraction Algorithm
+** Graphs and minimum cuts
+*** Goals for these lectures
+    - further practice with randomized algorithms
+      - in a new application domain (graphs)
+    - introduction to graphs and graph algorithms
+    - also: "only" 20 years ago!
+*** Graphs
+    - two ingredients
+      - vertices aka nodes (V)
+      - edges (E) = pairs of vertices
+        - can be undirected (unordered pair) or directed (ordered pair) (aka arcs)
+    - examples: road networks, the web, social networks, precedence constraints, etc
+*** Cuts of graphs
+    - definition: a cut of a graph (V, E) is a partition of V into two non-empty
+      sets A and B
+    - definition: the crossing edges of a cut (A, B) are those with:
+      - one endpoint in each of (A,B) (undirected)
+      - tail in A, head in B (directed)
+    - there are roughly 2^n cuts in a graph with n vertices
+*** the minimum cut problem
+    - input: an undirected graph G=(V,E) [parallel edges allowed]
+    - goal: compute a cut with fewest number of crossing edges (a min cut)
+*** a few applications
+    - identify network bottlenecks/weaknesses
+    - community detection in social networks
+    - image segmentation
+      - input = graph of pixels
+      - use edge weights [(u,v) has large weight => "expect" u,v to come from
+        same object]
+      - hope: repeated min cuts identifies the primary objects in picture
+** Graph representations
+   - consider an undirected graph that has n vertices, no parallel edges, and is
+     connected (ie "in one piece"). The minimum number of edges is n - 1 and the
+     maximum is n(n - 1)/2
+*** Sparse vs dense graphs
