@@ -805,3 +805,36 @@ x*y =
      connected (ie "in one piece"). The minimum number of edges is n - 1 and the
      maximum is n(n - 1)/2
 *** Sparse vs dense graphs
+    - let n = # of vertices, m = # of edges
+    - in most (but not all) applications, m is omega(n) and O(n^2)
+    - in a "sparse graph", m is O(n) or close to it
+    - in a "dense graph", m is closer to theta(n^2)
+*** Adjacency Matrix
+    - represent G by a nxn 0-1 matrix A, where A_ij = 1 <=> G has an i-j edge
+    - variants
+      - A_ij = # of i-j edges (if parallel edges)
+      - A_ij = weight of i-j edge (if any)
+      - A_ij = {+1 if i->j
+        - {-1 if i<-j
+*** Adjacency Lists
+    | ingredients                                | space        |
+    |--------------------------------------------+--------------|
+    | array (or list) of vertices                | theta(n)     |
+    | array (or list) of edges                   | theta(m)     |
+    | each edge points to its endpoints          | theta(m)     |
+    | each vertex points to edges incident on it | theta(m)     |
+    |--------------------------------------------+--------------|
+    |                                            | theta(m + n) |
+    
+    - question: which is better?
+    - answer: depends on graph density and operations needed
+    - this course: focus on adjency lists
+** Random Contraction Algorithm
+   - compute minimum cut of a graph
+   - due to karger, early 90s
+   - while there are more than 2 vertices:
+     - pick a remaining edge (u,v) uniformly at random
+     - merge (or "contract") u and v into a single vertex
+     - remove self-loops
+   - return cut represented by 2 final vertices
+*** Example
