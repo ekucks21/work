@@ -1,0 +1,19 @@
+* Pairing
+** Games
+   - *ping pong*: one person writes a test, the other person makes it pass and
+     writes a new test, then passes the keyboard back. Keeps people from hogging
+     the keyboard
+   - *farsighted navigator*: navigator has to only talk about a level higher
+     than the methods/code (implementation details). Builds navigation skills
+     and avoids backseat driving
+   - *silent programming*: no talking. Switch keyboard at least every 3 minutes.
+     This helps avoid getting into long, winding conversations without getting
+     something done
+   - *yes, and...*: try to go with what other person has done. Instead of just
+     waiting to give your own idea, with a "no but...", try and add to what the
+     other person did with a "yes, and"
+   - make up your own games
+     - is something hard? make a rule that forces you to do it or get better at it
+     - is something helpful? find something that creates opportunities to do it
+     - is something harmful? make a rule that prevents it
+     - is something missing? find a way to prompt it periodically
