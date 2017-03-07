@@ -1,4 +1,5 @@
 #+STARTUP entitiespretty
+#+OPTIONS: latexpreview
 
 * Prerequisites
 - math
@@ -837,4 +838,30 @@ x*y =
      - merge (or "contract") u and v into a single vertex
      - remove self-loops
    - return cut represented by 2 final vertices
-*** Example
+   - key question: what is probability of success?
+** Analysis of Contraction Algorithm
+*** The setup
+    - question: what is the probability of success?
+    - fix a graph G=(V,E) with n vertices, m edges
+    - fix a minimum cut (A,B)
+    - let k = # of edges crossing (A,B) (call these edges F)
+*** What could go wrong?
+    - suppose an edge of F is contracted at some point => algorithm will not
+      output (A,B)
+    - suppose only edges in side A or inside B get contracted => algorithm will
+      output (A,B)
+    - thus: Pr[output is (A,B)] = Pr[never contracts an edge of F]
+    - let S_i = event that an edge of F contracted in iteration i
+    - goal: compute Pr[\not S_i n\not S_2 n\not S_3 ... n\not S_{n-2}]
+    - the probability that an edge crossing the minimum cut (A,B) is chosen in
+      the first iteration (as a function of the number of vertices n, the number
+      of edges m, and the number k of crossing edges) is k/m
+      - Pr[S_1] = # of crossing edges/# of edges
+        - = k/m
+*** The first iteration
+    - key observation: degree (# of incident edges) of each vertex is at least k
+    - reason: each vertex v defines a cut ({v}, V - {v})
+    - since \sum_v degree(v) = 2m, we have m >= kn/2
+    - since Pr[S_1] = k/m, Pr[S_1] <= 2/n
+*** The second iteration
+    - reacall: Pr[\not S_1  \not S_2]
