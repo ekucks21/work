@@ -864,4 +864,19 @@ x*y =
     - since \sum_v degree(v) = 2m, we have m >= kn/2
     - since Pr[S_1] = k/m, Pr[S_1] <= 2/n
 *** The second iteration
-    - reacall: Pr[\not S_1  \not S_2]
+    - recall: Pr[\not S_1 \cap \not S_2] = Pr[\not S_2 | \not S_1] * Pr[\not S_1]
+      - Pr[\not S_1] >= (1 - 2/n)
+      - Pr[\not S_2 | \not S_1] = 1 - (k/# remaining edges)
+    - note: all nodes in contracted graph define cuts in G with at least k
+      crossing edges => all degrees in contracted graph are at least k
+    - so: # of remaining edges >= 1/2 * k(n-1)
+    - S_o * Pr[\not S_2 | \not S_1] >= 1 - 2/(n-1)
+*** All iterations
+    - in general: Pr[\not S_1 \cap \not S_2 \cap \not S_3 \cap ... \cap \not S_(n-2)] =
+      Pr[\not S_1] Pr[\not S_2 | \not S_1] Pr[\not S_3 | \not S_1 \cap \not S_2] * ... * Pr[\not
+      S_{n-2} | \not S_1 \cap ... \cap \not S_{n-3}]
+      >= (1 - 2/n)(1 - 2/(n-1))(1 - 2/(n-2))...(1 - 2/(n-(n-4)))(1 -
+      2/(n-(n-3))) 
+      = (n-2)/n * (n-3)/(n-1) * (n-4)/(n-2) ... * 2/4 * 1/3 = 2/n(n-1) >= 1/n^2
+    - problem: low success probability! (BUT: non-trivial, still remarkably high
+      for such a simple algorithm)
