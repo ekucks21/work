@@ -17,3 +17,236 @@
      - is something helpful? find something that creates opportunities to do it
      - is something harmful? make a rule that prevents it
      - is something missing? find a way to prompt it periodically
+* Mob programming
+** Quick Start Guide 
+*** Try to show kindness, consideration, and respect
+    - avoid resentments, anger, and unhappiness that can often burden a team
+*** Hold a short retrospective after each session
+    - what went well?
+    - what didn't go well?
+    - what to change?
+** The details
+*** The team: who belongs
+**** It depends
+     - everyone who can provide useful input on project is candidate
+     - may not always get everyone we want, but some subset should be enough usually
+**** Our story
+     - four programmers, one tester, and a facilitator
+     - product experts not always available
+     - some people occasionally joined group (not as good because not shared
+       memory, rapid constant decision making, etc)
+     - sometimes group would be as large as fourteen people on a single computer
+       - was effective
+*** The workspace setup
+**** The Area
+     - comfortable
+     - plenty of room and others can join easily
+     - theirs is about 16' x 18'
+***** Our preferred setup
+      - projector or large monitor
+      - chairs in semi-circle
+      - flip chart, whiteboard, easel, etc
+***** A laptop and larger monitor on table
+***** The triangle setup
+      - three monitors with three keyboards, two people at each monitor, each
+        monitor showing same thing
+**** The computer
+     - one computer for programming
+     - other computers for researching, looking at databases, writing code
+       snippets, writing emails, and other purposes in parallel
+**** Projectors or monitors
+     - two projectors for dual monitors, about 4' x 6' each
+**** keyboard/mouse
+     - two keyboards/mice so everyone has choice
+**** chairs and tables
+**** telephone and email
+     - team related telephone calls and email communications done as team
+**** ergonomics
+     - natural keyboards, limited time at keyboard/mouse, ability to stand and
+       work, changing positions, limiting eye strain, etc
+**** private work area
+*** The driver-navigator model in depth
+    - for an idea to go from someone's head into the computer it must go through
+      someone else's hands
+    - forces us to communicate and discuss our design
+**** The navigators and navigation
+     - thinking, describing, discussing, and steering
+     - driver is translating
+     - each driver may need different level of navigation
+     - navigation is not "coding out loud" but expressing intent
+     - while solution emerges navigators focus on the next step
+     - multiple navigators must listen, discuss, point out difficulties, all
+       using kindness, consideration, and respect
+**** The driver and driving
+     - also involved in discussion, but main job is to translate ideas into code
+     - being great at writing code is important, but the real work of software
+       development is the problem solving, not the typing
+     - if driver is not highly skilled, navigators help by guiding the driver in
+       how to create the code (keyboard shortcuts, language features, clean code
+       practices, etc)
+     - not everyone has to be a driver if not comfortable
+     - person navigating might skip driving if they are best person for task at hand
+**** The consultation - the pause for clarity
+     - times when code creation must pause, and discussion happen
+       - we notice the solution we are trying is not as useful as we imagined it
+         would be
+       - we suspect we don't understand the problem we are trying to solve well
+         enough to be coding it
+       - the code is getting messy and it's time to refactor
+       - feeling stalled or blocked, trying to code our way through something we
+         don't understand
+       - the solution isn't jumping out at us
+       - we can't easily articulate the idea we are trying to code
+       - we suspect we are heading down a wrong path
+       - anytime anyone on the team thinks we need clarity or a pause
+     - during pause often work at whiteboard
+     - sometimes may need to just get out of room and give it some time (lunch,
+       take a walk, or work on something else for a while)
+**** Conflicting ideas
+     - don't take a lot of time deciding, simply try one or the other and
+       evaluate the result and consider if we should try the other one
+**** Rotating the roles
+***** The how
+      - timer, from 4 to 15 minutes
+      - decrease time when more people or someone new joining the team
+      - if you're driver and you have idea, hand over the keyboard and become a navigator
+***** The why
+      - gives people a chance to both use their keyboard and their design skills
+***** A timer
+      - switch as soon as timer finishes
+***** Summary
+      - forces us to think through ideas and be better able to explain them
+        before putting them into code
+      - results in more carefully designed code
+      - each idea is subject to review of other programmers
+      - maybe eases cognitive load as we switch between problem, solution, and
+        code levels
+*** Why would we work this way?
+**** The typical answers
+     - continuous sharing and learning
+     - lots of brain power on a single problem leads to better solutions
+     - continuous design and code review
+     - it's fun
+     - less stress
+     - things get done and into production sooner
+     - don't put off doing things that provide clean code
+**** The real answer: we work this way because the team decided to work this way
+     - only people close enough to the context of the work and can adjust and
+       steer as needed are the people doing the work
+**** Provide a safe place where we can discover awesomeness
+     - must find a way to provide an environment where the natural awesomeness
+       of each individual can be released
+*** How can we work this way?
+**** It's the people not the code
+     - many different opinions on solutions
+     - it's about how we treat each other, not which solution is the "best way"
+**** Our story
+     - started getting on each others' nerves
+     - held a retrospective
+     - wrote a number of one-word completions to sentence "how I want to be
+       treated: ___"
+**** Kindness, Consideration, and Respect
+     - agreed to two things
+       - practice using this as a guideline for how we would treat each other
+       - start by pretending to treat each other this way
+     - things improved quickly
+     - people would help each other see how to improve in treating each other well
+** Productivity
+   - productivity not as meaningful as effectiveness. We could productively
+     create something no one wants
+*** The productivity question
+**** How can five people at one computer be productive?
+**** Changing the question
+     - "transformation comes more from pursuing profound questions than seeking
+       practical answers" - Peter Block
+***** What things destroy productivity?
+      - context switching - working on something important and having to set it
+        aside to work on something else
+      - bad code - meaningless names, long methods, deeply nested if statements,etc
+      - meetings
+      - gold-plating
+      - unclear or missing requirements
+      - no comments in code
+      - comments that are not relevant or are misleading
+      - too many comments
+      - emails
+      - interruptions
+      - dead code
+      - noisy work area
+      - quiet work area
+      - working on too many things, multitasking
+      - team members taken off the team to work on other "important" things
+      - person we need to get an answer from is not available
+      - bugs
+      - bad or missing unit tests
+      - needing to do status reports and other busywork
+      - estimating
+      - slow computer, bad equipment
+      - difficulties getting access to the database, dev environment, or
+        requirements documents
+      - surfing the web
+**** What we found with mob programming
+     - many of these problems faded away
+       - no longer waiting for answers to questions because people with answers
+         are sitting and working with us
+       - with everyone reviewing the code continuously the code was of much
+         better quality
+       - things got done sooner with the whole team focusing on one thing at a time
+       - rather than trying to be productive we were learning to be effective
+         - this is concept of outcome over output - it doesn't matter how much
+           work you get done if you are working on wrong thing
+         - we were delivering functionality into actual use very quickly, so it
+           could be proven to be of value and tweaked or changed or removed to
+           better meet the desired result
+**** Another way to think about it
+     - do we get more done by working separately
+     - can we really answer either question?
+     - is it important to get the most work out of each person? or is it more
+       important to get the best of everyone into everything we do?
+*** Problems that faded away
+**** It's the system?
+**** A backpacking trip
+     - we need backpack, food containers, even though they're extra weight, but
+       we should try to minimize so we can bring more meaningful stuff
+**** Management overhead
+     - much of this related to coordinating efforts of people working separately
+     - meetings, emails, follow-ups, status reports, code merges, code reviews,
+       writing documents, scheduling work, performance management, etc
+     - more time managing work, less time working
+**** Working well together
+     - no need to discuss next week's work in meeting, no need for email
+       communications to figure out who needs to be in that meeting, no need to
+       manage work assigned during that meeting, etc
+     - when working together:
+       - stories we are working on go from "start" to "finish" in a matter of a
+         few hours. We get that story into production and get rapid feedback on
+         its value
+       - waiting for answers to questions happens much less. Everyone we
+         normally turn to for answers is sitting with us
+       - with five or six sets of eyes on our code we get immediate and
+         continuous design and code review. Typical code smells like long
+         methods and bad method names are greatly reduced
+       - we need fewer meetings
+     - "A system is never the sum of its parts. It is the product of the
+       interactions of its parts" - Russell Ackoff
+     - notice what is working well, and find a way to turn it up
+*** Problem: Faulty Communications
+**** Communication problems are pervasive, numerous, and paralyzing
+     - latency in getting answers to questions
+     - communication by email
+     - communication by documentation
+**** Problem: getting answers to questions can take a lot of time
+     - if question blocks developer, they may have to switch to other work or
+       make a "best guess" at answer
+     - we call this the question queue time: the amount of time that we must
+       wait before we get an answer to a question that is blocking us
+     - working on different things leads to context switching and work sitting
+       unfinished
+     - when answer comes, do we switch back to original work?
+     - we've hidden the queuing problem by masking it with an inventory
+       problem
+     - subject matter experts work with mob 1-2 hours a day and available by
+       instant messaging, phone, or screen share rest of the day
+     - strive for a two-minute rule where any question to subject matter expert
+       can be answered within two minutes, if at all possible
+**** Problem: communication by email
