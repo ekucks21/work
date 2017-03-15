@@ -483,4 +483,34 @@
     - instead of putting our code in packages, we may choose to package our
       applications into deployable containers (eg docker, rkt, lxd, amis)
     - environments can be made more production-like in a way that is consistent
-      and repeatable 
+      and repeatable (eg compilers are removed from the environment, debugging
+      flags are turned off, etc)
+    - pipeline stores history, including information about which tests were
+      performed on which build, which builds have been deployed to which
+      environment, and what the test results were
+    - continuous integration practices
+      - comprehensive and reliable set of automated tests that validate we are
+        in a deployable state
+      - a culture that "stops the entire production line" when our validation
+        tests fail
+      - developers working in small batches on trunk rather than long-lived
+        feature branches
+*** Build a fast and reliable automated validation test suite
+    - nightly build not fast enough feedback
+      - takes longer to find out what change broke the build
+      - issue might have been caused by a test environment issue, which may only
+        reappear the next night
+      - people are checking in more changes with more potential breakers while
+        we're fixing the current stuff
+      - automated tests
+        - unit tests: does what developer expects
+        - acceptance tests: does what customer expects
+        - integration tests: our application correctly interacts with other
+          production applications and services. These tests are brittle and long
+          running.
+*** Catch errors as early in our automated testing as possible
+    - find errors as early as possible
+    - errors should be found with the fastest category of testing possible
+    - finding/fixing integration test failures is painful, especially since the
+      feedback loop can be hours
+    - whenever we find an error with an acceptance/integration test
