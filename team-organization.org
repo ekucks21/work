@@ -250,3 +250,62 @@
      - strive for a two-minute rule where any question to subject matter expert
        can be answered within two minutes, if at all possible
 **** Problem: communication by email
+** A Few Other Things
+*** What is the ideal number of team members?
+    - sometimes they grew to 12, driving optional
+    - sometimes 3 or 4
+    - "if at any time during our time together you find yourself in any
+      situation where you are neither learning nor contributing, use your two
+      feet, go someplace else"
+    - work somewhere within earshot so can be called back into the group for input
+*** Continuous learning
+**** Providing an environment where learning is "amplified"
+**** Study and practice together
+     - it's important that we learn how to work well together, how to collaborate
+**** Friday afternoon practice
+     - 2 or 3 hours to learn clean code techniques, test-driven development,
+       design patterns, and other important topics
+     - help each other improve capabilities and skills
+     - helped become better at sharing, teaching, and asking useful questions
+**** Mob programming and learning
+**** Our morning hour of learning
+     - hour long learning session each morning to cover questions that arose
+       during work so as not to interrupt work flow
+**** Amplifying learning
+***** Keep it safe to learn
+      - allow others to keep their self-esteem when they make a mistake
+      - it enhances our relationships and capabilities if we are able to freely
+        and comfortably admit when we don't know and can ask for help
+***** The beginner's mind
+      - least experienced person on the team will have great ideas that no one
+        else will have
+*** Exposed
+**** Why it might be frightening
+     - people might see how little I know
+     - introverts might struggle
+**** What can we do about this?
+**** Mistakes are part of the process?
+     - senior team members should make it clear they make mistakes and not
+       attempt to hide them
+     - own each other's mistakes. Never accept it that it is someone else's
+       mistake. It is our mistake
+     - never blame, never shame
+**** This is voluntary
+*** Ergonomics, health, and sanity
+**** Let's take care of ourselves
+**** Projectors, chairs, keyboards, and screens
+**** Streching, taking walks, taking breaks
+**** Preventing the spread of illness
+**** Sanity
+     - don't lead every conversation
+     - take mental "breaks" and let others take the helm
+*** Retrospectives: reflect, tune and adjust frequently
+    - take a look at how things are going, decide on something to make better,
+      decide on an action to take, take the action, reflect on it and repeat the
+      whole thing sometime soon
+**** The daily retrospective
+     - also the just-in-time retrospective. Instant retrospective when something
+       occurs to someone
+**** An example
+     - group related ideas together
+**** Give it a name
