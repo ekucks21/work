@@ -309,3 +309,87 @@
 **** An example
      - group related ideas together
 **** Give it a name
+**** A daily practice period
+     - practice a coding activity for an hour a day
+**** Another retrospective, another step forward: the 12 days of index
+     - pratice a little bit
+     - learn the next bit by itself
+     - then combine two pieces and practice together
+     - then learn the next bit and repeat
+**** Things to notice
+     - we pay attention to try to figure out what needs attention
+     - we experiment and try things that might be an improvement
+     - we review and make changes as often as needed
+     - we name things in a way that makes it easy to "get the idea" and talk
+       about what we do
+     - we practice doing the work we do
+     - as we become better at a practice, we start to look for ways to improve
+       that practice
+**** The takeaway
+     - check out "Agile retrospectives: making good teams great"
+*** Turn up the good
+**** Solving problems - what's wrong with that?
+     - also ask "what is good and we want more of it"
+**** Turn up the good
+***** Noticing the hint of goodness whenever we can
+      - become good at noticing anything different
+      - if something has even a faint glimmer of goodness, capture that, ponder
+        it and reflect on it
+***** Exploring ways to turn it up
+      - what would it be like if ...?
+      - what would it take to ...?
+      - what would have to true for ...?
+***** Being resolute in searching for the pocket of goodness
+      - when you find something good, make it visible
+      - refer to it on a regular basis
+      - take time to review
+***** Nurture and grow the goodness
+      - protect new ideas from those who don't understand that for greatness to
+        emerge, there must be phases of not-so-greatness
+*** Relaxed and sustainable
+    - many people found mob programming all day to be exhausting, but we
+      didn't find that to be the case. Why?
+**** The problem
+     - may be if we're not constantly giving input, we don't feel useful
+**** We don't need to be a hero
+     - from "Essentialism: The disciplined pursuit of less"
+       - "We aren't looking for a plethora of good things to do. We are looking
+         for our highest level of contribution: the right thing the right way at
+         the right time"
+     - rare that each person must discuss every possibility, find every
+       objection, or even fully pay attention at every moment
+     - likely times when our help might not actually be helpful
+     - better to just let things unfold while quietly observing
+     - dance of ideas with its own rhythm where people step in and step out as appropriate
+     - sometimes the hero is the person that lets others speak and contribute
+**** Take a break
+     - sometimes the whole team takes a break together but more commonly each
+       team member takes breaks whenever they feel they need one
+**** Make it sustainable
+     - it is not about getting the most work out of each person, it is about
+       getting the best of everyone into everything we do
+*** Barriers to mob programming
+**** My manager won't let us
+     - take baby steps. Try is small scale for a few hours a week
+**** We don't have space to do it
+**** We don't know how to get started
+**** Our teams don't even want to pair program
+     - mob programming offers safety in numbers that pair programming doesn't
+     - voluntary participation is best
+**** The tech lead coded while everyone watched
+**** We were exhausted after a few hours
+**** We aren't really very agile
+*** Remote mob programming
+**** Advantages to working remotely
+     - our team is made up of the right people regardless of location
+     - finding great people is easier if they have flexible work arrangements
+       and can work from any geographic location
+     - there may be no need for a physical space if everyone can work out of
+       their home
+     - it might be quicker to put together a team and get started working on the
+       software if no one needs to relocate
+     - flexibility for people with families: a baby at home, elderly parent
+       needing care, or simply personal preference
+     - some people are more comfortable if they can work from home instead of
+       being in the same physical space as others
+**** Can we "turn up the good" on working remotely?
