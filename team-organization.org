@@ -394,3 +394,46 @@
        being in the same physical space as others
 **** Can we "turn up the good" on working remotely?
 **** How do we do this?
+     - video collaboration so everyone's faace is visible and we can talk
+     - screen sharing program, possibly a virtual machine, where the code is visible
+     - keyboard sharing so each person can drive
+     - whiteboarding so each person can scribble
+**** Are we effective when we remote?
+**** Things to watch out for
+     - need a protocol so we don't talk over each other
+     - get good at explaining things. Harder to have remote conversation
+     - keyboard sharing can be tricky
+       - may want to make driver role longer than normal
+       - time lag when coding on remote desktop
+       - if keyboard sharing problematic, one person can work as driver, with
+         everyone else being a navigator
+     - time zone differences
+       - set aside time blocks that are best possible compromise
+       - can we work together just few hours and still be effective?
+     - low bandwidth environments can become unusable
+     - when someone having problems with environment, it's a team problem
+**** Exploring and experimenting
+     - set up experiment in same physical office
+*** Frequently asked questions
+**** What if I am a slow typist, even though I have tried for years to get faster? How can I be a driver? I will hold everyone back
+**** What happens when there are one or two extroverts on the team? Will they push the other team members aside? What if I am shy and introverted? How can I fit in with the team and be able to give my input?
+     - be aware
+     - listen before speaking
+     - encourage people to speak
+**** What is the maximum amount of time someone should serve as the Driver before switching? What if the driver role lasted all day or a week?
+**** Should the driver sit in front of all the navigators or the other way around? How about putting the navigators in a semicircle around the driver?
+**** What happens when there are differing skill levels among the team? Won't the ideas of the advanced programmers dominate the solutions?
+     - could be a good thing by accelerating learning
+     - try to follow junior members ideas. Often simpler and suggest a new path
+     - experts should explain their ideas, otherwise they don't fully understand it
+**** What if I can't keep up with the speed of the programming? How will I be able to master the code base if I am falling behind in my understanding? When I code alone I have time to let the ideas sink in
+     - you don't need to understand everything
+     - if you're lost, alert the team
+**** How do you do mob programming if you can't mob all the time? Can you do it only for occasions when it seems critical?
+     - yes
+**** How can we do mob programming with remote teams?
+**** How to use mobbing for large organizations?
+**** Where do our testers fit?
+     - they're part of the mob. They have valuable insight into designing
+       testable software and interfaces
+*** Do we recommend mob programming?
