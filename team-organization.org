@@ -437,3 +437,18 @@
      - they're part of the mob. They have valuable insight into designing
        testable software and interfaces
 *** Do we recommend mob programming?
+**** To whose advantage?
+**** It is not a panacea
+     - requires environment where experimentation failures lead to evolutionary
+       changes rather than punishment
+     - courteous and open environment where differing ideas can be freely
+       exchanged and discussed
+     - works better with tdd, frequent inspect-and-adapt cycles, and continuous delivery
+**** If you decide to try it
+     - start small
+     - begin with short-term learning exercises like code katas
+     - make participation voluntary
+     - hold frequent retrospectives
+** Part Five: Experience reports
+*** Teaching mob programming
+*** Using mob programming as a training tool
