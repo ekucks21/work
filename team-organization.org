@@ -250,6 +250,114 @@
      - strive for a two-minute rule where any question to subject matter expert
        can be answered within two minutes, if at all possible
 **** Problem: communication by email
+     - emails become careful so we can point back to the correctness of previous
+       emails. Other people get added as arguments escalate
+     - preferred communication hierarchy:
+       - face-to-face, side-by-side
+       - phone and screen share
+       - instant message
+       - email
+**** Problem: communication by documentation
+     - often written long before we can validate correctness
+     - use face-to-face interactions to communicate
+*** Problem: Issues with Decision Making
+**** Accountability
+     - good when praising
+     - bad when blaming
+     - "we pay more attention on knowing who to blame, in case we fail, than in
+       creating the conditions to succeed" - Yves Morieux
+**** Two sides of the same problem
+     - there is often insufficient information and time available to make a
+       decision with reasonable confidence which can lead to a reluctance to commit
+     - once a decision is made we might feel compelled to defend our decision.
+       Perhaps even long after it is clear it is no longer defensible
+**** The reluctance to commit
+     - "in preparing for battle I have always found that plans are useless, but
+       planning is indispensable" - Dwight D Eisenhower
+**** Need to defend
+     - "It's in the doing of the work that we discover the work that we must do"
+     - once we have invested it can be difficult to throw away and start over
+     - "so convenient a thing to be a reasonable creature, since it enables onet
+       o find or make a reason for everything one has a mind to do" - Benjamin Franklin
+**** What's wrong with this?
+     - we're losing ability to adapt
+**** How mob programming helps with decision making
+     - "just-in-time" decision making
+     - quickly prove/disprove an idea
+     - "we no longer need to make many of the decisions we previously needed to make"
+     - group owns the decision so no one needs to defend
+*** Problem: Doing more than what is barely sufficient
+**** Examples of "too much"
+***** Too many features
+***** Bloated feature implementation
+***** Over-design, gold-plating hacking things together
+***** Test bloat
+**** How mob programming has helped
+***** Barely sufficient number of features
+      - only work one thing and then get feedback so better able to pick correct features
+***** Barely sufficient feature implementation
+      - we are working with product expert, users, and testers. Can make rapid
+        choices about the smallest deliverable version of the part we are
+        working on
+***** Barely sufficient code
+      - so many eyes leads to streamlined design
+***** Barely sufficient tests
+*** Problem: Technical debt
+**** A brief description of technical debt
+     - makes the code harder to work on than it should be
+**** It faded away
+**** The mobbing mindset of clean code
+     - with mob programming we are continuously reviewing our designs,
+       inspecting our code, and reducing our technical debt
+**** The many forms of technical debt
+***** Duplicate code and hidden abstractions
+      - much more likely to catch this if whole team works one thing at a time.
+        Someone in group more likely to remember, "hey, we already did this"
+      - group memory forms on a mobbing team in a way that doesn't happen when
+        we work separately
+***** Inherited debt
+      - more eyes likely to understand hard to read code
+      - and less pressure on one individual to figure it out
+*** Problem: Thrashing
+**** Thrashing of programmers
+     - examples
+       - being asked to switch from one task to another
+       - questions that interrupt our focus while programming
+       - emergency work
+       - meetings
+       - waiting for answers to blocking questions
+       - multiple roles
+       - moving people from team to team - "load balancing"
+       - "can I interrupt you for a moment?"
+**** Who gets thrashed?
+     - most knowledgeable
+     - the "lone expert"
+     - those who can't say no
+     - anyone assigned to more than one team
+**** Why is thrashing harmful?
+     - examples
+       - thrashing introduces additional inventory
+       - wasted effort. Work we've begun and then dropped will often need to be restarted
+       - disrupts flow of team's work
+       - when the team's "go-to" person is pulled away then everyone is blocked
+       - poorer quality output. When we lose focus on our work then quality can suffer
+       - unfinished work of "thrashed" team member becomes blocking point for
+         other team members
+**** How it faded away for us
+     - work is more quickly finished and this limits window for interruptions
+     - emergencies can be triaged and worked on as a group later, resulting in
+       better resolutions
+     - if something requires immediate attention, whole team fixes it quickly
+     - sometimes a person splits off to handle something
+*** Problem: politics
+**** Problem: a disincentive to help others
+     - being put under pressure to finish our own work makes us less willing to
+       help others
+*** Problem: meetings
+    - we get together in meetings and then assign work to be done outside of
+      meetings, with coordination often happening in checklists, follow up
+      meetings, emails. Too much overhead
+*** A simple cost analysis of mob programming
 ** A Few Other Things
 *** What is the ideal number of team members?
     - sometimes they grew to 12, driving optional
