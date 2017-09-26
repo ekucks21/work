@@ -513,4 +513,104 @@
     - errors should be found with the fastest category of testing possible
     - finding/fixing integration test failures is painful, especially since the
       feedback loop can be hours
-    - whenever we find an error with an acceptance/integration test
+    - whenever we find an error with an acceptance/integration test, we should
+      create a unit test that could find error faster, earlier, and cheaper
+    - ideal testing automation pyramid
+      - starting at bottom
+      - automated unit tests
+      - automated component tests
+      - automated integration tests
+      - automated api tests
+      - automated gui tests
+      - manual session based testing
+    - non-ideal testing automation inverted pyramid
+      - starting at bottom
+      - manual test
+      - automated gui test
+      - integration test
+      - unit test
+    - if unit or acceptance tests are too difficult and expensive to write and
+      maintain, likely we have architecture too tightly-coupled, where strong
+      separation between module boundaries no longer exist. Need to create more
+      loosely-coupled system so modules can be independently tested without
+      integration environments
+    - acceptance test suites for even most complex applications that run in
+      minutes are possible
+*** Ensure tests run quickly (in parallel, if necessary)
+    - design tests to run in parallel, potentially across many different servers
+    - run different categories of tests in parallel
+    - for example, when build passes acceptance tests, may run our performance
+      testing in parallel with security testing
+    - may or may not allow manual exploratory testing until build has passed all
+      automated tests - which enables faster feedback, but may also allow manual
+      testing on builds that will eventually fail
+*** Write our automated tests before we write code
+    - ensure tests fail. Check in
+    - ensure tests pass. Check in
+    - refactor both new and old code to make it well structured. Ensure tests
+      pass. Check in again
+*** Automate as many of our manual tests as possible
+    - by automating what tests we can, we enable all testers to work on
+      high-value activities that cannot be automated, such as exploratory
+      testing or improving the test process itself
+    - we do not want automated tests that are unreliable or generate false positives
+    - unreliable tests create significant problems
+      - waste valuable time, increase overall effort of running and interpreting
+        test results, and often lead to stressed developers ignoring test
+        results entirely or turning off automated tests
+      - to mitigate, a small number of reliable, automated tests almost always
+        preferable over a large number of manual or unreliable automated tests
+      - focus on automating only tests that genuinely validate business goals we
+        are trying to achieve
+*** Integrate performance testing into our test suite
+    - detect conditions like
+      - database query times grow non-linearly
+      - code change causes number of database calls, storage use, or network
+        traffic to increase ten-fold
+      - code change causes number of database calls, storage use, network
+        traffic to increase ten-fold
+    - creating performance testing environment can easily be more complex than
+      creating the production environment for application itself
+    - may build performance testing environment at start of project and ensure
+      that we dedicate whatever resources are required to build it early and correctly
+    - should log performance results and evaluate each performance run against
+      previous results
+*** Integrate non-functional requirements testing into our test suite
+    - availability, scalability, capacity, security, so forth
+    - want to enforce consistency and correctness of following
+      - supporting application, databases, libraries, etc
+      - language interpreters, compilers, etc
+      - operating systems (eg audit logging enabled, etc)
+      - all dependencies
+    - infrastructure as code configuration, can use same testing frameworks we
+      use to test our code to also test our environments are configured and
+      operating correctly (eg encoding environment tests into cucumber or
+      gherkin tests)
+    - should run tools that analyze code that constructs environments
+      (foodcritic for chef, puppet-lint for puppet)
+    - run any security hardening checks as part of automated tests
+    - must create andon cord so that when someone breaks deployment pipeline, we
+      take all necessary steps to get back into green build state
+*** Pull our andon cord when deployment pipeline breaks
+    - when someone introduces change that causes our build to fail, no new work
+      is allowed to enter system until problem is fixed
+    - if someone needs help to resolve problem, they can bring in whatever help
+      they need
+    - when pipeline broken, notify entire team, so anyone can fix or roll-back commit
+    - may even configure version control system to prevent further code commits
+      until first stage (builds and unit tests) of the pipeline is green
+    - to increase visibility of automated test failures, we should create highly
+      visible indicators so that entire team can see when build or tests are failing
+    - this step more challenging than creating builds and test servers, since
+      this requires changing human behavior and incentives
+*** Why we need to pull the andon cord
+    - if we don't pull the cord
+      - someone checks in breaking code but no one fixes it
+      - someone checks in another change onto broken build, but no one sees the
+        failing test results which are hidden by first failures
+      - our existing tests don't run reliably, so we are very unlikely to build
+        new tests
+    - when these things happen, deployments to any environment become as
+      unreliable as when we had no automated tests or using waterfall method,
+      where majority of our problems are discovered in production
+*** Conclusion
