@@ -614,3 +614,68 @@
       unreliable as when we had no automated tests or using waterfall method,
       where majority of our problems are discovered in production
 *** Conclusion
+    - set the stage for implementing continuous integration, which allows many
+      small teams to independently and safely develop, test, and deploy code
+      into production
+** Enable and practice continuous integration
+   - long running branches makes integration much harder
+   - automated tests allow continuous integration without constantly breaking things
+*** Small batch development and what happens when we commit code to trunk infrequently
+    - people more reluctant to refactor because creates even more difficult merges
+*** Adopt trunk-based development practices
+    - gated commits - deployment pipeline confirms that submitted change will
+      successfully merge, build as expected, and pass all automated tests before
+      actually being merged into trunk. If not, developer will be notified
+** Automate and enable low-risk releases
+*** Automate our deployment process
+    - document existing deployment to production process, such as:
+      - packaging code in ways suitable for deployment
+      - creating pre-configured virtual machine images or containers
+      - automating the deployment and configuration of middleware
+      - copying packages or files onto production servers
+      - restarting servers, applications, or services
+      - generating configuration files from templates
+      - running automated smoke tests to make sure the system is working and
+        correctly configured
+      - running testing procedures
+      - scripting and automating database migrations
+    - reduce lead times and handoffs to reduce errors and loss of knowledge
+    - development must work closely with operations to ensure all tools and
+      processes we co-create can be used downstream
+    - requirements for deployment pipeline include:
+      - deploying the same way to every environment
+      - smoke testing our deployments
+      - ensure we maintain consistent environments
+*** Enable automated self-service deployments
+    - "as a developer, there has never been a more satisfying point in my career
+      than when I wrote the code, when I pushed the button to deploy it, when I
+      could see the production metrics confirm that it actually worked in
+      production, and when I could fix it myself if it didn't"
+    - not significant difference in reliability if dev or operations actually do deploys
+    - to enable fast flow, want code promotion process that can be performed by
+      either dev or operations, ideally without manual steps or handoffs. This
+      affects following steps:
+      - build: must create packages from version control that can be deployed to
+        any environment, including production
+      - test: anyone should be able to run any or all of our automated test
+        suite on their workstation or on test systems
+      - deploy: anybody should be able to deploy packages to any environment
+        where they have access, executed by running scripts that are checked
+        into version control
+*** Integrate code deployment into deployment pipeline
+    - our deployment automation must provide following capabilities:
+      - ensure packages created during continuous integration are suitable for
+        deployment into production
+      - show readiness of production environments at a glance
+      - provide push-button, self-service method for any suitable version of
+        packaged code to be deployed into production
+      - record automatically, for auditing and compliance purposes, which
+        commands were run on which machines when, who authorized it, and what
+        output was
+      - run smoke test to ensure system is operating correctly and configuratin
+        settings, including items such as database connection strings, are correct
+      - provide fast feedback for deployer so they can quickly determine whether
+        it was successful
+    - case study: etsy - self-service developer deployment
+      - run unit tests in parallel on multiple jenkins instances
+      - run smoke tests and gui driven tests
