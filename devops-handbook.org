@@ -679,3 +679,56 @@
     - case study: etsy - self-service developer deployment
       - run unit tests in parallel on multiple jenkins instances
       - run smoke tests and gui driven tests
+*** Decouple deployments from releases
+    - deployment is installation of specified version of software into given environment
+    - release is when we make a feature or set of features available to all our
+      customers or segment of customers. Our code and environments should be
+      architected in such a way that release of functionality does not require
+      changing our application code
+    - as we deploy faster, how quickly we expose new functionality becomes
+      business and marketing decision, not technical decision
+    - two broad categories of release patterns
+      - *environment based release patterns*: we have two or more environments
+        we deploy into, but only one receiving live traffic (via load
+        balancers). New code deployed into non-live and release is performed
+        moving traffic to environment.
+        - blue-green deployments
+        - canary releases
+        - cluster immune systems
+      - *application-based release patterns*: modify application so we
+        selectively release and expose specific application functionality by
+        small configuration changes. Feature flags that progressively expose new
+        functionality in production to devs, all internal employees, 1% of
+        customers, or everyone
+        - enables dark launching, where we stage all functionality to be
+          launched in production and test it with production traffic
+**** environment based release patterns
+***** blue green
+      - two production systems, blue and green
+      - at any time, only one serving customer traffic
+      - deploy to inactive system, test it out, then redirect traffic
+      - rollback is performed by redirecting to the old system
+****** Dealing with database changes
+       - two approaches
+         - create two databases
+           - blue (old) and green (new)
+           - during release, put blue database into read-only mode, perform
+             backup, restore onto green, and finally switch traffic
+           - problem is if we need to roll back to blue version, we can lose
+             transactions if we don't manually migrate from green
+         - decouple database changes from application changes
+           - release of database changes separate from release of application changes
+           - make only additive changes to database, never mutating existing
+             database objects
+           - no assumptions in application about which database version will be
+             in production
+****** Case study: Dixons retail - blue-green deployment for point-of-sale system
+       - typically upgrading POS systems are big bang waterfall
+       - weeks before planned POS upgrade, they started sending out new versions
+         of client POS software installers to retail stores over slow network
+         links, deploying new software in inactive state
+       - when all clients staged (upgraded client and server had tested together
+         succesfully, and new client software had been deployed to all clients),
+         store managers were empowered to decide when to release new version
+       - depending on business needs, some managers wanted to use new features
+         immediately while others wanted to wait
