@@ -732,3 +732,37 @@
          store managers were empowered to decide when to release new version
        - depending on business needs, some managers wanted to use new features
          immediately while others wanted to wait
+***** Canary and Cluster IMmune System release patterns
+      - canary release pattern automates release process of promoting to
+        successively larger and more critical environments
+        - miners brought in canaries to see if too much gas min mine
+        - when we release, monitor how software in environment is performing
+        - when something wrong, roll back. Otherwise go to next environment
+      - cluster immune system
+        - expands upon canary pattern by linking production monitoring system
+          with release process and automating roll back of code when user-facing
+          performance of production system deviates outside predefined expected
+          range, such as conversion rates for new users drops below historical
+          norms of 15-20%
+        - protects against defects that are hard to find through automated tests
+          and reduces time required to detect and respond to degraded performance
+**** Application-based patterns to enable safer releases
+***** Implement feature toggles
+      - selectively enable and disable features without requiring production
+        code deployment
+      - usually implemented by wrapping application logic or UI elements with
+        conditional statement, where feature is enabled or disabled based on configuration
+      - allows us to
+        - roll back easily
+        - gracefully degrade performance: when service experiences extremely
+          high loads that would normally require increased capacity or cause
+          failures, we can use feature toggles to reduce quality of service
+          (reduce number of customers who can access a certain feature, disable
+          CPU-intensive features, etc)
+        - increase our resilience through service-oriented architecture: if we
+          have feature that relies on another service that isn't complete yet,
+          we can still deploy feature into production but hide it behind feature toggle
+      - to ensure we find errors in features, automated acceptance tests should
+        run with all features on (also test that feature toggling functionality
+        works)
+***** Perform dark launches
