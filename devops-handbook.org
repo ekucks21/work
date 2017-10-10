@@ -766,3 +766,164 @@
         run with all features on (also test that feature toggling functionality
         works)
 ***** Perform dark launches
+      - deploy all functionality into production then perform testing of
+        functionality while still invisible to customers
+      - for large/risky changes, do this for weeks before launch, enabling us to
+        safely test with anticipated production loads
+      - dark launch with feature disabled, modify user session code to make
+        calls to new functions, but instead of displaying results, simply log or
+        discard results
+      - may have 1% or users make invisible calls to new feature scheduled to be
+        launched to see how new feature behaves under load. Progressively
+        increase simulated load by increasing frequency and number of users
+        exercising new functionality
+      - when launch feature, progressively roll out feature to small segments of
+        customers, halting release if any problems found
+      - when we have adequate production telemetry, can enable faster feedback
+        cycles to validate business assumptions and outcomes immediately
+      - no longer big bang - by time announce and release feature, have already
+        tested business hypotheses and run countless experiments with real customers
+****** Case study: dark launch of facebook chat (2008)
+       - deployed every day into production for a year, but dark launch, to
+         find/fix performance issues
+** Survey of continuous delivery and continuous deployment in practice
+   - deployments should be low-risk, push-button events we can perform on demand
+   - when trunk is always in releasable state and we can release on demand at
+     push of a button, doing continuous delivery
+   - when deploying good builds into production on regular basis through
+     self-service, engaging in continuous deployment
+* 13: Architect for low-risk releases 
+  - strangler application pattern - instead of ripping out and replacing old
+    services with architectures that no longer support organizational goals, put
+    existing functionality behind API and avoid making further changes. All new
+    functionality is implemented in new services that use desired architecture,
+    making calls to old system when necessary
+    - especially useful migrating portions of monolithic application or tightly
+      coupled services to one that is more loosely coupled
+    - consequences of overly tight architectures
+      - every time commit code to trunk, risk creating global failures (break
+        everyone else's tests or entire site goes down)
+  - "IT Project owners are not held accountable for their contributions to
+    overall system entropy". Reducing overall complexity and increasing
+    productivity is rarely goal of individual project
+** An architecture that enables productivity, testability, and safety
+   - loosely coupled architecture with well-defined interfaces that enforce how
+     modules connect with each other promotes productivity and safety
+   - enables small, productive, two-pizza teams able to make small changes that
+     can be safely and independently deployed
+   - each service has well-defined API, enabling easier testing of services and
+     creation of contracts and SLAs between teams
+** Architectural archetypes: monoliths vs microservices
+   - monoliths fast to build but hard to operate at scale
+   - no perfect architecture. Any architecture meets particular set of goals or
+     range of requirements and constraints, such as time to market, ease of
+     developing functionality, scaling, etc. Architecture will almost certainly
+     evolve over time as needs change
+   - monolithic v1 (all functionality in one application)
+     - pros
+       - simple at first
+       - low inter-process latency
+       - single codebase, one deployment unit
+       - resource efficient at small scale
+     - cons
+       - coordination overhead increases as team grows
+       - poor enforcement of modularity
+       - poor scaling
+       - all-or-nothing deploy (downtime, failures)
+       - long build times
+   - monolithic v2 (sets of monolithic tiers: "front end presentation",
+     "application server", "database layer")
+     - pros
+       - simple at first
+       - join queries are easy
+       - single schema, deployment
+       - resource-efficient at small scale
+     - cons
+       - tendency for increased coupling over time
+       - poor scaling and redundancy (all or nothing, vertical only)
+       - difficult to tune properly
+       - all-or-nothing schema management
+   - microservice (modular, independent, graph relationship vs tiers, isolated persistence)
+     - pros
+       - each unit simple
+       - independent scaling and performance
+       - independent testing and deployment
+       - can optimally tune performance (caching, replication, etc)
+     - cons
+       - many cooperating units
+       - many small repos
+       - requires more sophisticated tooling and dependency management
+       - network latencies
+*** Case study: evolutionary architecture at amazon (2002)
+    - amazon started in 1996 as monolithic application, running on web server,
+      talking to database
+    - time went on, application grew too tangled, with complex sharing
+      relationships meaning individual pieces could not be scaled
+    - bit architectural change in past five years (2001-2005) was to move from
+      two-tier monolith to fully distributed, decentralized, services platform
+      serving many different applications
+    - lessons
+      - lesson 1: when applied rigorously, strict service orientation is
+        excellent technique to achieve isolation; level of ownership and control
+        not seen before
+      - lesson 2: prohibiting direct database access by clients makes
+        performing, scaling, and reliability improvements to service state
+        possible without involving clients
+      - lesson 3: development and operational process greatly benefits from
+        switching to service-orientation. Services model key enabler for teams
+        innovating quickly with strong customer focus. Each service has team and
+        team is completely responsible for service, from scoping out
+        functionality to architecting, building, and operating
+    - in 2011, amazon performing 15000 deployments per day
+    - 2015, 136,000 deployments per day
+** Use the strangler application pattern to safely evolve our enterprise architecture
+   - place existing functionality behind API, where it's unchanged, implementing
+     new functionality using desired architecture, making calls to old system
+     when necessary
+   - all services accessed through versioned APIs called versioned services or
+     immutable services
+   - versioned APIs enable modification of service without impacting callers,
+     which allows system to be more loosely coupled. If we need modify
+     arguments, create new API version and migrate teams who depend on service
+     to new version
+   - if services do not have cleanly defined APIs, we should build them or at
+     least hide complexity of communicating with such systems within a client
+     library that has cleanly defined API
+   - by repeatedly decoupling functionality from tightly-coupled system, move
+     our work into safe and vibrant ecosystem where developers can be far more
+     productive resultin in legacy application shrinking. Might even disappear
+     as all needed functionality migrates to new architecture
+   - with strangler applications, we avoid reproducing existing functionality in
+     some new architecture - often business processes far more complex than
+     necessary due to idiosyncrasies of existing systems, which we end up replicating
+   - by researching user, can often re-engineer process so that we can design
+     far simpler and more streamlined means to achieving business goal
+   - martin fowler: "much of my career has involved rewrites of critical
+     systems. You'd think it's easy, just make new one do what old one did. Yet
+     always much more complex than they seem, and overflowing with risk. Big
+     cut-over date looms, and pressure is on. While new features (always new
+     features) are liked, old stuff has to remain. Evven old bugs often need to
+     be added to rewritten system"
+   - seek to create quick wins and deliver early incremental value before
+     continuing to iterate
+*** Case study: strangler pattern at blackboard learn (2011)
+    - dealing with consequences of legacy j2ee codebase that went back to 1997
+    - in 2010, build, integration, and testing processes getting more and more
+      complex and error prone
+    - larger product got, longer lead times and worse outcomes for customers
+    - to even get feedback from integration process required twenty four to
+      thirty six hours
+    - saw that amount of code kept growing, but commits were dropping off due to
+      difficulty of introducing change
+    - in 2010, used strangler pattern
+    - created building blocks, which allowed developers to work in separate
+      modules that were decoupled from monolithic codebase and accessed through
+      fixed APIs
+    - when building blocks made available to developers, size of monolithc
+      source code began to decrease as developers moved code into building block
+      modules source code
+    - allowed deveopers to be more productive because work safer with mistakes
+      resulting in small, local failures instead of major catastrophes
+** Conclusion
+   - architecture one of top predictors of productivity of engineers that work
+     within it
