@@ -927,3 +927,51 @@
 ** Conclusion
    - architecture one of top predictors of productivity of engineers that work
      within it
+* Part IV: The Second Way, The Technical Practices of Feedback
+** Create telemetry to enable seeing and solving problems
+   - often can't tell root cause when outage in production
+   - standard response is start rebooting things
+   - best organizations diagnose and fix issues - "culture of causality"
+   - need telemetry to accomplish this - "an automated communications process by
+     which measurements and other data are collected at remote points and are
+     subsequently transmitted to receiving equipment for monitoring"
+   - need telemetry in applications, environments, and deployment pipeline
+   - etsy used graphite to track metrics, overlaid over every metric graph when
+     deployments happened to see how they affected things
+   - high performers resolve production incidents 168 times faster than peers
+   - top two technical practices enabling fast mean time to repair (MTTR)
+     - use of version control by operations
+     - telemetry and proactive monitoring in production
+** Create our centralized telemetry infrastructure
+   - must have holistic metrics that show how whole system is behaving,
+     applications and environment
+   - need graphing, visualizing, anomaly detection, proactive alerting and
+     escalation, etc
+   - The Art of Monitoring, by James Turnbull, describes monitoring architecture
+     using open source tools that could be customized and deployed at scale
+     - data collection at the business logic, application, and environment layer
+       - creating telemetry with events, logs, and metrics
+       - logs may be stored on each server but preferably want all logs sent to
+         common service that enables easy centralization, rotation, deletion (eg syslog)
+       - gather metrics at all levels
+         - operating system
+           - cpu
+           - memory
+           - disk
+           - network usage
+     - event router responsible for storing events and metrics
+       - enables visualization, trending, alerting, anomaly detection
+       - where configuration related to services stored and where
+         threshold-based alerting and health checks happen
+   - with centralized logs, can turn metrics into counting/summarization
+   - log event such as "child pid 14024 exit signal segmentation fault" can be
+     counted and summarized as single segfault metric
+   - could configure alert if we go from "ten segfaults last week" to "thousands
+     of segfaults in last hour"
+   - also need telemetry from deployment pipeline, such as when tests pass/fail
+     or how long performance tests take to run
+   - should be self service to enter and retrieve information from telemetry
+     infrastructure, as opposed to tickets and waiting for reports
+   - Adrian Cockcroft "Monitoring is so important that our monitoring systems
+     need to be more available and scalable than the systems being monitored"
+** Create application logging telemetry that helps production
