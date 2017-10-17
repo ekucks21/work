@@ -942,36 +942,169 @@
    - top two technical practices enabling fast mean time to repair (MTTR)
      - use of version control by operations
      - telemetry and proactive monitoring in production
-** Create our centralized telemetry infrastructure
-   - must have holistic metrics that show how whole system is behaving,
-     applications and environment
-   - need graphing, visualizing, anomaly detection, proactive alerting and
-     escalation, etc
-   - The Art of Monitoring, by James Turnbull, describes monitoring architecture
-     using open source tools that could be customized and deployed at scale
-     - data collection at the business logic, application, and environment layer
-       - creating telemetry with events, logs, and metrics
-       - logs may be stored on each server but preferably want all logs sent to
-         common service that enables easy centralization, rotation, deletion (eg syslog)
-       - gather metrics at all levels
-         - operating system
-           - cpu
-           - memory
-           - disk
-           - network usage
-     - event router responsible for storing events and metrics
-       - enables visualization, trending, alerting, anomaly detection
-       - where configuration related to services stored and where
-         threshold-based alerting and health checks happen
-   - with centralized logs, can turn metrics into counting/summarization
-   - log event such as "child pid 14024 exit signal segmentation fault" can be
-     counted and summarized as single segfault metric
-   - could configure alert if we go from "ten segfaults last week" to "thousands
-     of segfaults in last hour"
-   - also need telemetry from deployment pipeline, such as when tests pass/fail
-     or how long performance tests take to run
-   - should be self service to enter and retrieve information from telemetry
-     infrastructure, as opposed to tickets and waiting for reports
-   - Adrian Cockcroft "Monitoring is so important that our monitoring systems
-     need to be more available and scalable than the systems being monitored"
-** Create application logging telemetry that helps production
+*** Create our centralized telemetry infrastructure
+    - must have holistic metrics that show how whole system is behaving,
+      applications and environment
+    - need graphing, visualizing, anomaly detection, proactive alerting and
+      escalation, etc
+    - The Art of Monitoring, by James Turnbull, describes monitoring architecture
+      using open source tools that could be customized and deployed at scale
+      - data collection at the business logic, application, and environment layer
+        - creating telemetry with events, logs, and metrics
+        - logs may be stored on each server but preferably want all logs sent to
+          common service that enables easy centralization, rotation, deletion (eg syslog)
+        - gather metrics at all levels
+          - operating system
+            - cpu
+            - memory
+            - disk
+            - network usage
+      - event router responsible for storing events and metrics
+        - enables visualization, trending, alerting, anomaly detection
+        - where configuration related to services stored and where
+          threshold-based alerting and health checks happen
+    - with centralized logs, can turn metrics into counting/summarization
+    - log event such as "child pid 14024 exit signal segmentation fault" can be
+      counted and summarized as single segfault metric
+    - could configure alert if we go from "ten segfaults last week" to "thousands
+      of segfaults in last hour"
+    - also need telemetry from deployment pipeline, such as when tests pass/fail
+      or how long performance tests take to run
+    - should be self service to enter and retrieve information from telemetry
+      infrastructure, as opposed to tickets and waiting for reports
+    - Adrian Cockcroft "Monitoring is so important that our monitoring systems
+      need to be more available and scalable than the systems being monitored"
+*** Create application logging telemetry that helps production
+    - dev and ops engineers must create production telemetry as part of daily
+      work, both for new and existing services
+    - in applications, every feature should be instrumented
+    - devs may temporarily add more telemetry to application to diagnose problems
+      on their workstation
+    - ops may use telemetry to diagnose production problem
+    - infosec and auditors may use telemetry to confirm required control
+    - production manager may use to track business outcomes, feature usage, or
+      conversion rates
+    - different logging levels for different usage
+      - debug: anything that happens in program, can be used in production
+        temporarily for troubleshooting
+      - info: actions that are user-driven or system specific
+      - warn: conditions that could be potentially become error (eg database call
+        taking longer than some predefined time)
+      - error
+      - fatal: tells us when we must terminate (eg network daemon can't bind a
+        network socket)
+    - "when deciding whether a message shoud be error or warn, imagine being
+      woken up at 4 am. Low printer toner is not an error"
+    - list of events that should generate logging entries
+      - authentication/authorization decisions (including logoff)
+      - system and data access
+      - system and application changes (especially privileged changes)
+      - data changes, such as adding, editing, deleting data
+      - invalid input (possible malicious injection, threats, etc)
+      - resources (ram, disk, cpu, bandwidth, or other resource with hard or soft limits)
+      - health and availibility
+      - startups and shutdowns
+      - faults and errors
+      - circuit breaker trips
+      - delays
+      - backup success/failure
+    - to make easier to interpret logs, should create logging hierarchical
+      categories, such as non-functional (eg performance, security) and
+      attributes related to features (eg search, ranking)
+*** Use telemetry to guide problem solving
+    - without telemetry must rely on rumor and hearsay, which leads to
+      unfortunate metric of mean time until declared innocent - how quickly can
+      we convince everyone that we didn't cause outage
+    - where culture of blame around outages, groups may avoid documenting changes
+      and displaying telemetry to avoid blame
+    - other negative outcomes from no public telemtry include highly charged
+      political atmosphere, need to deflect accusations, and inability to create
+      institutional knowledge around how incidents occurred and learnings needed
+      to prevent in future
+    - questions we can answer with telemetry during troubleshooting
+      - what evidence does monitoring have that problem is occurring?
+      - what are relevant events and changes in applications/environments that
+        could have contributed to problem?
+      - what hypotheses can we formulate to confirm link between proposed causes
+        and effects?
+      - how can we prove hypotheses and successfully fix?
+*** Enable creation of production metrics as part of daily work
+    - need to make it easy for everyone to create metrics that can be created,
+      displayed, and analyzed
+    - must create infrastructure and libraries
+    - ideally, one line of code should create new metric that shows up in common
+      dashboard where everyone can see it
+    - this philosophy guided stasd, created and open sourced at etsy
+    - when generate telemetry graphs, also overlay when production changes occur,
+      such as code deployments
+    - other libraries include JMX and codehale metrics. Other tools New Relic,
+      AppDynamics, Dynatrace, munin, and collectd
+*** Create self-service access to telemetry and information radiators
+    - after creating infrastructure, must tell everyone in organization about how
+      to use it
+    - put information in central areas where dev and ops work, allowing everyone
+      to see how services are performing
+    - information radiator "generic term for any number of handwritten, drawn,
+      printed, or electronic displays which a team places in highly visible
+      location, so that all team members as well as passers-by can see latest
+      information at a glance: count of automated tests, velocity, incident
+      reports, continuous integration status, and so on"
+    - information radiators promote
+      - team has nothing to hide from visitors
+      - team has nothing to hide from itself: it acknowledges and confronts problems
+    - might even broadcast telemetry to internal/external customers to build trust
+**** Case study: creating self-service metrics at linkedin (2011)
+     - in 2010, even though lots of telemetry, very difficult for engineers to
+       get access and analyze
+     - made changes to make it more accessible and usefulness increased significantly
+*** Find and fill any telemetry gaps
+    - need metrics for
+      - business level: sales transactions, revenue, user signups, churn rate,
+        A/B testing results
+      - application level: transaction times, user response times, application faults
+      - infrastructure level: web server traffic, cpu load, disk usage
+      - client software level: application errors and crashes, user measured
+        transaction times
+      - deployment pipeline level: build pipeline status (red/green), change
+        deployment lead times, deployment frequencies, test environment
+        promotions, environment status
+    - telemetry better informs security as well
+    - by detecting and correcting problems earlier, can fix them while they are
+      small and easy to fix, with fewer customers impacted
+*** Application and business metrics
+    - instrument all user actions required for desired customer outcomes
+    - for e-commerce sites, how much time users spent on site
+    - for search engines, reduce time spent on site
+    - business metrics part of customer acquisition funnel, which is theoretical
+      steps potential customer will take to make purchase
+    - in e-commerce, measurable journey events include total time on site,
+      product link clicks, shopping cart adds, and completed orders
+    - goal is every business metric be actionable - top metrics should inform how
+      product changes and be amenable to experimentation and A/B testing
+    - anyone viewing information radiators should be able to make sense of
+      information in context of desired organizational outcomes, such as goals
+      around revenue, user attainment, conversion rates, etc
+    - should define and link each metric to business outcome metric at earliest
+      stages of feature definition and development, and measure outcomes after in production
+    - business context can be created by being aware of/visually displaying time
+      periods relevant to high-level business planning/operations, such as high
+      transaction periods during holidays, end of quarter financial close
+      periods, or scheduled compliance audits. Information may be used as
+      reminder to avoid scheduling risky changes when availability is critical or
+      avoid certain activities when audits in progress
+*** Infastructure metrics
+    - when something goes wrong with environment, need to know what
+      applications/services affected
+    - use tools like Zookeeper, Etcd, Consul, etc which let services register
+      themselves and store information about what other services they depend on
+    - business metrics create context for infrastructure metrics - "instead of
+      measuring operations against amount of downtime, better to measure against
+      how much revenue we lost"
+*** Overlaying other relevant information onto our metrics
+    - even after pipeline and small frequent changes, still risky
+    - for instance, service with large number of transactions, production changes
+      can result in significant settling period, where performance degrades
+      substantially as all cache lookups miss
+    - overlay onto graphs things like deployment, when service under maintenance
+      or being backed up
+** Analyze telemetry to better anticipate problems and achieve goals
