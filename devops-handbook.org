@@ -1108,3 +1108,41 @@
     - overlay onto graphs things like deployment, when service under maintenance
       or being backed up
 ** Analyze telemetry to better anticipate problems and achieve goals
+   - for example, netflix gathers information about all its servers and then
+     looks to find outliers who don't fit the normal pattern and replaces those
+     outliers with new servers
+*** Use means and standard deviations to detect potential problems
+    - "alert fatigue is single biggest problem right now...Need to be more
+      intelligent about alerts or we'll all go insane"
+*** Instrument and alert on undesired outcomes
+    - find alerts that could have enabled faster detection/diagnosis of actual
+      incidents in the recent past
+    - for example, if NGINX web server stopped responding to requests, what
+      indicators could warn earlier
+      - application level: increasing web page load times, etc
+      - OS level: server free memory running low, disk space running low, etc
+      - database level: database transaction times taking longer than normal, etc
+      - network level: number of functioning servers behind load balancer
+        dropping, etc
+    - by repeating this process on ever-weaker failure signals, find problems
+      earlier in life cycle
+*** Problems that arise when our telemetry data has non-gaussian distribution
+**** Case study: auto-scaling capacity at netflix
+     - netflix developed tool scryer which predicts what customer load will be
+       based on historical usage patterns and preemptively provisions necessary capacity
+     - addresses three problems with AAS (amazon auto scaling)
+       - rapid spikes in demand cannot have new servers added quickly enough
+       - after outages, decrease in demand led to too many servers being removed
+       - AAS didn't factor in known usage traffic patterns when scheduling
+         compute capacity
+     - scryer uses combination of outlier detections to discard spurious data
+       points and then uses things like Fast Fourier Transform (FFT) and linear
+       regression to smooth data while preserving legitimate traffic spikes
+     - months after scryer in production, netflix greatly improved customer
+       viewing experience, improved service availability, and reduced amazon EC2 costs
+**** Using anomaly detection techniques
+     - some companies have ops engineer trained in statistics (R code) to detect
+       anomalies earlier and earlier
+     - techniques
+       - smoothing
+         - suitable if data is time series, meaning each data point has time stamp
