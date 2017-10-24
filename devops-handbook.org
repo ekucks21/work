@@ -1146,3 +1146,100 @@
      - techniques
        - smoothing
          - suitable if data is time series, meaning each data point has time stamp
+         - uses moving averages to transform data by averaging each point with
+           all other data within sliding window
+       - fast fourier transforms
+         - image transforms
+       - kolmogorov-smirnov
+         - find similarities/differences in periodic/seasonal data
+**** Case study: advanced anomaly detection
+**** Tools
+     - Oculus: finds graphs with similar shapes which may indicate correlation
+     - Opsweekly: tracks alert volumes and frequencies
+     - Skyline: identifies anomalous behavior
+** Enable feedback so development and operations can safely deploy code
+   - telemetry in production gives developers confidence to deploy
+** Use telemetry to make deployments safer
+   - monitor telemetry during deployments
+   - disable bad code with feature toggles, fix forward, or roll back
+   - deployment and change events overlaid onto metric graphs
+** Dev shares pager rotation duties with ops
+   - put developers, managers, architects on pager rotation to ensure everyone
+     getting feedback from architectural/coding decision
+   - side effect is that development management see that business goals are not
+     achieved simply because feature marked as "done". Feature only done when
+     performing as designed in production
+** Have developers follow work downstream
+   - contextual inquiry: product team watches customer use application in
+     natural environment
+   - feel customers pain in the UX
+** Have developers initially self-manage their production service
+   - development groups self-manage services in production before they become
+     eligible for centralized ops group to manage
+   - more likely to not dump bunch of operational issues onto operations group
+   - define launch requirements that must be met in order for services to
+     interact with real customers
+   - ops engineers should act as consultants
+   - launch guidance/requirements
+     - defect counts and severity
+     - type/frequency of pager alerts
+     - monitoring coverage
+     - system architecture
+     - deployment process
+     - production hygiene
+   - if deficiencies found during review, assigned ops engineer should help resolve
+   - learn about regulatory compliance objectives
+     - does service generate significant amount of revenue?
+     - does service have high user traffic?
+     - does service store payment cardholder information? other security issues
+       that could create regulatory, contractual obligation, privacy, or
+       reputation risk?
+     - does service have other regulatory or contractual compliance
+       requirements, such as export regulations, PCI-DSS, HIPAA, etc?
+   - if service already in production a while, may use service handback
+     mechanism when service becomes sufficiently fragile. Operations can return
+     production support responsibility to development
+*** Case study: the launch and hand-off readiness review at google
+    - Site Reliability Engineers - software engineer tasked with operations
+    - Launch Readiness Review must be signed off on before new service made
+      publicly available
+    - Hand-Off Readiness Review performed when service transitioned to
+      ops-managed state, months after LRR
+    - SRE assigned to team to help with LRR and HRR
+    - in best case, product teams use LRR checklist as guideline, working on
+      fulfilling it while developing service and reaching out to SREs when need help
+** Integrate hypothesis-driven development and A/B testing into our daily work
+   - many times, developers work on features months/years over multiple releases
+     without confirming whether desired business outcomes being met
+   - when we discover feature isn't achieving desired results, making correction
+     may be out-prioritized by new features
+   - "most inefficient way to test a business model or product idea is to build
+     the complete product to see whether the predicted demand actually exists"
+   - before build feature, "should we build it, and why?"
+   - then do fastest, cheapest experiments to validate through user research
+     whether intended feature will achieve desired outcome
+** A brief history of A/B testing
+   - developed during direct response marketing, which sends some sort of
+     message directly to people asking for response
+   - tested many different styles of message to see which more effective
+** Integrating A/B testing into our feature testing
+   - example: website where visitors randomly shown one of two versions of page,
+     either control (A) or treatment (B). Based on statistical analaysis of
+     subsequent behavior, demonstrate whether significant difference in outcomes
+     of two, establishing causal link between treatment (change in feature,
+     design element, background color) and outcome (conversion rate, average
+     order size)
+   - also can run experiments with more than one variable, known as multivariate testing
+   - "taken to extreme, the organization and customers would have been better
+     off giving entire team vacation, instead of building one of these
+     non-value-adding features"
+** Integrate A/B testing into our release
+   - fast, iterative A/B testing made possible by being able to quickly and
+     easily do production deployments on demands, using feature toggles
+   - etsy open-sourced experimentation framework (Feature API)
+   - other A/B tools are Optimizely, Google Analytics, etc
+** Integrating A/B testing into feature planning
+   - once infrastructure in place, product owners must think about each feature
+     as hypothesis and use testing to prove/disprove
+     - *we believe* increasing size of hotel images on booking page
+     - *will result* in improved customer engagement and conversion
