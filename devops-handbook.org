@@ -1243,3 +1243,125 @@
      as hypothesis and use testing to prove/disprove
      - *we believe* increasing size of hotel images on booking page
      - *will result* in improved customer engagement and conversion
+     - *we will have confidence to proceed when* we see a 5% increase in
+       customers who review hotel images who then proceed to book in forty-eight hours
+   - adopting experimental approach requires us to break down work into small
+     units and validate whether each unit of work is delivering expected outcomes
+   - if not, modify future plan
+*** Case study: doubling revenue growth through fast release cycle experimentation at yahoo! answers
+    - yahoo answers had approximately 140 million monthly visitors, with over
+      twenty million active users answering questions in twenty languages
+    - however, user growth and revenue had flattened
+    - after increasing speed of deployment from 4 weeks to multiple times a
+      week, able to rapidly experiment
+    - resulted in increased monthly visits of 72%, increased user engagement of
+      threefold, and team doubled revenue
+    - to continue success, team focused on optimizing top metrics:
+      - time to first answer: how quickly was answer posted to user question?
+      - time to best answer: how quickly user community award best answer?
+      - upvotes per answer: how many times answer upvoted?
+      - answers/week/person: how many answers users creating?
+      - second search rate: how often did visitors have to search again for answer?
+** Create review and coordination processes to increase quality of our current work
+   - peer review process at github increases quality, makes deployments safe,
+     and integrates into flow of everyone's daily work. Uses pull requests
+   - pull requests used to deploy code through collective set of practices
+     called "github flow" - how engineers request code reviews, gather and
+     integrate feedback, and and announce that code will be deployed to production
+   - five steps
+     - to work on something new, engineer creates descriptively named branch off master
+     - engineer commits to branch locally, regularly pushing work to same branch
+       on server
+     - when need feedback/help, or when they ready to merge, open a pull request
+     - when get desired reviews and approvals, engineer can merge into master
+     - once code changes merged/pushed to master, engineer deploys into production
+   - goal to ensure development, operations, and infosec continuously
+     collaborating so changes to systems reliable, secure, safe, as designed
+** The dangers of change approval processes
+   - knight capital failure was when fifteen minute deployment error resulted in
+     $440 million trading loss, during which engineering teams unable to disable
+     production services
+   - forced company to be sold over weekend
+   - for high profile incidents, typically two counterfactual narratives for why
+     accident occurred
+   - first narrative that accident due to change control failure
+   - second narrative accident due to testing failure
+   - in environments with low trust, command and control cultures, outcomes of
+     change control and testing countermeasures often result in more problems
+   - building high trust cultures likely largest management challenge of decade
+** Potential dangers of "overly controlling changes"
+   - can contribute to long lead times, reducing strength and immediacy of
+     feedback from deployment process
+   - change control often put in place
+     - adding more questions that need to be answered to change request form
+     - requiring more authorizations from management or stakeholders
+     - requiring more lead time for change approvals so change requests can be
+       properly evaluated
+   - core belief of toyota production system "people closest to problem
+     typically know most about it", which more and more true the more
+     complex/dynamic work is
+   - further distance between person doing work and person deciding to do work,
+     worse the outcome
+   - high-performing organizations rely more on peer review and less on external
+     approval of changes
+** Enable coordination and scheduling of changes
+   - service oriented, loosely coupled architectures enable less communication/coordination
+   - however, still risk of interfering with each other (eg simultaneous A/B tests)
+   - may use chat rooms to announce changes and find collisons
+   - for complex organizations and more tightly coupled architectures, may need
+     deliberately schedule changes, where team representatives schedule and
+     sequence changes
+   - certain areas, like global infrastructure, always have higher risk and
+     require technical countermeasures like redundancy, failover, comprehensive
+     testing, and ideally simulation
+** Enable peer review of changes
+   - instead of external review, may require peer reviews
+   - usually prior to committing to trunk
+   - for higher risk areas, like database changes or business critical
+     components, may require review from subject matter expert
+   - non-linear relationship between size of change and risk of integrating change
+   - essential to work in small incremental steps
+   - "ask a programmer to review ten lines of code, he'll find ten issues. Ask
+     him to do five hundred lines, and he'll say it looks good"
+   - guidelines for review
+     - everyone must have someone review changes before committing to trunk
+     - everyone should monitor commit stream of team members so potential
+       conflicts can be identified
+     - define which changes qualify as high risk and require review from subject
+       matter expert
+     - if someone submits change that is too large to reason about easily,
+       should be split into multiple smaller changes that can be understood at glance
+   - should inspect code review statistics to determine number of proposed
+     changes approved versus not approved
+   - various forms
+     - pair programming
+     - over the shoulder: one developer looks over author's shoulder as latter
+       walks through code
+     - email pass-around: revision control system emails code to reviewers
+       automatically after code checked in
+     - tool assisted code review: things like github pull requests, more
+       formalized flow in tool
+*** Case study: code reviews at google (2010)
+    - trunk based development requires discipline and code reviews which cover:
+      - code readability for languages (enforces style guide)
+      - ownership assignments for code sub-trees to maintain consistency and correctness
+      - code transparency and code contributions across teams
+** Potential dangers of doing more manual testing and change freezes
+   - slows down deployment
+   - need to fully integrate testing into daily work as part of smooth and
+     continual flow into production
+** Enable pair programming to improve all our changes
+   - increases communication and learning
+   - better, simpler designs
+   - reduced bugs
+*** Case study: Pair Programming replacing broken code review processes at pivotal labs (2011)
+    - had to wait often week for review
+    - senior engineers always reviewing and didn't have enough time
+    - started requiring paired programming to avoid time cost of peer review
+    - code reviews can work but requires culture that values reviewing code as
+      highly as it values writing code
+** Evaluating effectiveness of pull request processes
+   - look at production outages and examine peer review process for relevant changes
+   - bad pull request doesn't have enough context for reader
+   - good pull request must have sufficient detail on why change is being made,
+     how change was made, as well as identified risks and resulting countermeasures
