@@ -1,0 +1,7 @@
+* Clojure and Information
+  - just use maps
+    - first class, functional associative data structures
+    - maps are functions of keys, keywords/symbols fns of maps
+    - generic library (algebra, composition, etc)
+    - names are first-class, namespace-qualified
+    - associating semantics with attributes, not aggregates
