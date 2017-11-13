@@ -121,7 +121,7 @@
          - first, enable faster on-demand releases
          - dedicated product team able to independently implement, test, and deliver
          - continuous planning -> single prioritized backlog of work
-         - interated testing as daily activity
+         - integrated testing as daily activity
        - results
          - doubled features delivered per month
          - halved number of defects
