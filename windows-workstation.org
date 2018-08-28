@@ -1,0 +1,39 @@
+* Intellij
+Found that running this in a vm was prohibitively slow. So currently running
+this directly on windows.
+* CygwinX Shortcuts
+http://thornton2.com/How_to_make_a_Windows_shortcut_that_runs_a_Cygwin_Bash_script_that_runs_X11_programs
+* Chrome
+This also is a bit slow on a vm and anything using the gpu causes a lot of churn
+so running directly on windows seems the best option
+* Hotkeys
+Using AutoHotkey to get things like the space bar as a control key and the caps
+lock modifier. Check out the dotfiles project for the files themselves. 
+** Gotchas
+*** windows keys
+    Couldn't figure out how to get the dual (spacebar as control) library to play nice with
+    the windows keys. With current configuration, the windows+number keys work,
+    but the windows key alone for the start menu doesn't. Added a separate
+    shortcut capslock+s for the start menu.
+*** reset dual keys
+    The autohotkey scripts don't run in admin privileged processes, which can
+    cause the underlying state of the dual keys to get messed up. To reset them,
+    hit the scroll lock key
+* Openshift
+I doubt this will run on windows. Haven't looked. Anyway, running it in a linux
+vm for now, as well as docker.
+* Pomodoro
+Using focus 10 for now, although it doesn't have useful keyboard shortcuts
+* Sharing files between vm and windows
+Looking into samba
+* Emacs
+Currently using it both on windows and linux vm. Emacs seems to run fairly slow
+on windows, particularly magit (related to windows being slower to start
+processes than linux), so I just use it to have nicer window management for
+cygwin consoles. On the linux vm, emacs runs faster, although there's the slight
+lagginess of the x server. Also, for virtualbox shared folders, there still
+seems to be a significant slowdown. Potentially could use a samba server for
+sharing files instead.
+* window manager
+bug.n looks interesting as a windows manager. It's free, uses AutoHotkey, and is
+keyboard centric
